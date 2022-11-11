@@ -1,3 +1,5 @@
+--Database Schema 
+
 --DROP SEQUENCE seqid;
 CREATE SEQUENCE seqID INCREMENT BY 1 START WITH 1;
 
