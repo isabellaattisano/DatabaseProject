@@ -25,7 +25,7 @@ INSERT into cart_items VALUES(2, 6, 'onesize', 4);
 select * from cart_items; 
 
 -------------------------------------------------------------------------------------------
--- VIEW CART
+-- VIEW CARTs
 
 select cv.cartid, cv.totalprice, ci.productid from cart_view cv JOIN cart_items ci on cv.cartid = ci.cartid;
 
