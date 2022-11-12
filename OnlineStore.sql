@@ -64,7 +64,8 @@ CREATE SEQUENCE seqProduct INCREMENT BY 1 START WITH 1;
 CREATE TABLE product(
     productid int not null,
     pname varchar2(50) not null,
-    ptype varchar2(20) check (ptype IN ('tops', 'bottoms', 'outerwear', 'dresses', 'accessories')),
+    ptype varchar2(20) check (ptype IN ('tops', 'bottoms', 'outerwear', 'dresses', 
+    'accessories', 'candles', 'phone cases', 'board games', 'mugs', 'posters')),
     price DECIMAL(10,2),
     primary key(productid)
 );
@@ -80,13 +81,29 @@ CREATE TABLE cart_items(
     foreign key (productid) references product(productid)
 );
 
+CREATE TABLE reviews(
+    foreign key (productid) references invoice(invoiceid),
+    
+    id int not null,
+    productid int not null,
+    psize varchar(20) check (psize IN ('x-small', 'small', 'medium', 'large', 'x-large', 'onesize')),
+    pquanity int not null,
+    primary key (cartid, productid),
+    foreign key (cartid) references customer(accountid),
+    foreign key (productid) references product(productid)
+);
+
 --drop view cart_view;
 CREATE View cart_view (cartid, totalprice) as 
 SELECT ci.cartid, sum(p.price*ci.pquanity)
 from product p NATURAL JOIN cart_items ci
 GROUP BY ci.cartid;
 
+select * from product;
 
---SELECT owner, table_name FROM all_tables;
---HI
+--Select Statement indicating product storage Quantity
+SELECT ptype, count(ptype) as Quantity
+from product
+group by ptype;
 
+select * from cart_items;
