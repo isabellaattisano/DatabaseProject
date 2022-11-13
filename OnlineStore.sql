@@ -35,6 +35,7 @@ CREATE TABLE payment (
     foreign key (accountid) references customer(accountid)
 );
 
+--DROP SEQUENCE seqInvoice;
 CREATE SEQUENCE seqInvoice INCREMENT BY 1 START WITH 1;
 
 --drop table invoice;
@@ -53,8 +54,7 @@ CREATE TABLE invoice_products(
     psize varchar(20) check (psize IN ('x-small', 'small', 'medium', 'large', 'x-large', 'onesize')),
     pquanity int not null,
     primary key (invoiceid, productid),
-    foreign key (invoiceid) references invoice(invoiceid),
-    foreign key (productid) references product(productid)
+    foreign key (invoiceid) references invoice(invoiceid)
 );
 
 --drop sequence seqProduct;
@@ -64,12 +64,17 @@ CREATE SEQUENCE seqProduct INCREMENT BY 1 START WITH 1;
 CREATE TABLE product(
     productid int not null,
     pname varchar2(50) not null,
-    ptype varchar2(20) check (ptype IN ('tops', 'bottoms', 'outerwear', 'dresses', 'accessories')),
+    ptype varchar2(20) check (ptype IN ('tops', 'bottoms', 'outerwear', 'dresses', 
+    'accessories', 'candles', 'phone cases', 'board games', 'mugs', 'posters')),
     price DECIMAL(10,2),
+    pquantity int check (pquantity >= 0),
     primary key(productid)
 );
 
---drop table cartItems;
+ALTER TABLE invoice_products 
+ADD CONSTRAINT fk_invoice foreign key (productid) references product(productid);
+
+--drop table cart_Items;
 CREATE TABLE cart_items(
     cartid int not null,
     productid int not null,
@@ -80,13 +85,26 @@ CREATE TABLE cart_items(
     foreign key (productid) references product(productid)
 );
 
+--drop table favorties 
+CREATE TABLE favorites(
+);
+
+--drop table reviews
+CREATE TABLE reviews(
+    foreign key (productid) references invoice(invoiceid),
+    cartid int not null,
+    productid int not null,
+    psize varchar(20) check (psize IN ('x-small', 'small', 'medium', 'large', 'x-large', 'onesize')),
+    pquanity int not null,
+    primary key (cartid, productid),
+    foreign key (cartid) references customer(accountid),
+    foreign key (productid) references product(productid)
+);
+
+
 --drop view cart_view;
 CREATE View cart_view (cartid, totalprice) as 
 SELECT ci.cartid, sum(p.price*ci.pquanity)
 from product p NATURAL JOIN cart_items ci
 GROUP BY ci.cartid;
-
-
---SELECT owner, table_name FROM all_tables;
---bella 
 
