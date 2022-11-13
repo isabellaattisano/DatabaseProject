@@ -31,5 +31,4 @@ group by ptype;
 select pname as Name, price as Price, pquantity as Quantity from product where ptype = 'tops';
 
 -------------------------------------------------------------------------------------------
-
 --RECEIVE SHIPMENT (increase the quantities of products) 

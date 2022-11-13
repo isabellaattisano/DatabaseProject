@@ -85,20 +85,19 @@ CREATE TABLE cart_items(
     foreign key (productid) references product(productid)
 );
 
---drop table favorties 
-CREATE TABLE favorites(
-);
-
---drop table reviews
 CREATE TABLE reviews(
     foreign key (productid) references invoice(invoiceid),
-    cartid int not null,
+    
+    id int not null,
     productid int not null,
     psize varchar(20) check (psize IN ('x-small', 'small', 'medium', 'large', 'x-large', 'onesize')),
     pquanity int not null,
     primary key (cartid, productid),
     foreign key (cartid) references customer(accountid),
     foreign key (productid) references product(productid)
+);
+--drop table favorties 
+CREATE TABLE favorites(
 );
 
 
@@ -107,4 +106,3 @@ CREATE View cart_view (cartid, totalprice) as
 SELECT ci.cartid, sum(p.price*ci.pquanity)
 from product p NATURAL JOIN cart_items ci
 GROUP BY ci.cartid;
-
