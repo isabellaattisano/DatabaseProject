@@ -59,15 +59,45 @@ select * from invoice;
 
 INSERT INTO customer VALUES(seqID.nextVal, 'Kayleigh', 'DiNatale', 'kwd@villanova.edu', '9141234567');
 
--- Add address
+-- Add addresses to Kayleigh's account
 -- select * from address
 INSERT INTO address VALUES(5, '123 Green St', 'Philadelphia', 'PA', '10456');
+INSERT INTO address VALUES(5, '50 Highbrook Rd', 'Binghamton', 'NY', '45231');
+
+-- View Kayleigh's address options
+SELECT Street ||' '|| City ||' '|| State ||' '|| Zip as Addresses 
+FROM address 
+WHERE accountID = 5;
+
+-- ADD payments to Kayleigh's account
+INSERT INTO payment VALUES(5, 2, 2028, '5555444433332222', '123');
+INSERT INTO payment VALUES(5, 1, 2021, '1234567891234567', '423');
+
+-- View Kayleigh's payment options
+select expMonth ||'/'|| expYear AS Expiration_Date, '************'||''||SUBSTR(cardnumber, 12, 4) AS Card_Number 
+FROM payment 
+WHERE accountID = 5;
 
 -- Add items to cart
 -- Insert 1 square neck blouse in size medium to cart
 INSERT INTO cart_items VALUES(5, 1, 'medium', 1);
--- Remove items from cart
+INSERT INTO cart_items VALUES(5, 3, 'medium', 1);
 
+--Select statement to show items in Kayleigh's Cart
+select * from cart_items where cartID = 5;
+
+-- Remove item from Kayleigh's cart
+DELETE FROM cart_items where cartid = 5 AND productID = 3;
+
+-- View recently deleted items from Kayleigh's cart
+SELECT * FROM recently_deleted_items where accountid = 5;
+
+-- Add to favorites
+INSERT INTO favorites VALUES(5, 2);
+INSERT INTO favorites VALUES(5, 5);
+
+-- Shows Kayleigh's favorited items
+SELECT pname, ptype, productid, price FROM favorites NATURAL JOIN product WHERE accountid = 5;
 
 -------------------------------------------------------------------------------------------
 
