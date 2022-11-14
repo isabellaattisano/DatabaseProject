@@ -3,6 +3,7 @@
 INSERT into customer VALUES(seqID.nextVal, 'customer', 'one', 'customerone@gmail.com', '0123456789');
 INSERT into customer VALUES(seqID.nextVal, 'customer', 'two', 'customertwo@gmail.com', '0123456789');
 
+select * from customer
 -------------------------------------------------------------------------------------------
 --BELLA ACCOUNT 
 
@@ -18,7 +19,10 @@ INSERT into customer VALUES(seqID.nextVal, 'Isabella', 'Attisano', 'iattisan@vil
 
 insert into cart_items VALUES(1, 15, 'small', 3);
 delete from cart_items where cartid = 1 and productid = 15;
+--select * from cart_items where cartid = 61 and productid = 21;
 select * from recently_deleted_items;
+
+
 
 --see all product reviews 
 
@@ -50,7 +54,20 @@ select ird.fname, ird.lname, ird.invoiceid from invoice_record_deleted_account i
 select * from invoice;
 -------------------------------------------------------------------------------------------
 
---KAYLEIGH ACCOUNT 
+-- KAYLEIGH ACCOUNT 
+-- Create account with ID 5
+
+INSERT INTO customer VALUES(seqID.nextVal, 'Kayleigh', 'DiNatale', 'kwd@villanova.edu', '9141234567');
+
+-- Add address
+-- select * from address
+INSERT INTO address VALUES(5, '123 Green St', 'Philadelphia', 'PA', '10456');
+
+-- Add items to cart
+-- Insert 1 square neck blouse in size medium to cart
+INSERT INTO cart_items VALUES(5, 1, 'medium', 1);
+-- Remove items from cart
+
 
 -------------------------------------------------------------------------------------------
 

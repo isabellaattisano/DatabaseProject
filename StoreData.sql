@@ -12,6 +12,26 @@ INSERT into product VALUES(seqproduct.nextVal, 'Monopoly', 'board games', 25.95,
 INSERT into product VALUES(seqproduct.nextVal, 'Grey Mug LARGE', 'mugs', 12.99, 2);
 INSERT into product VALUES(seqproduct.nextVal, 'Stay Fine and Drink Wine', 'posters', 9.99, 2);
 
+select * from product
+-------------------------------------------------------------------------------------------
+-- Update stored quantity
+
+-- Square neck blouse updated to a stored quantity of 30
+UPDATE product 
+SET squantity = 30
+WHERE ProductID = 1;
+
+-- Oversized Sweater updated to a stored quantity of 0
+UPDATE product 
+SET squantity = 0
+WHERE ProductID = 2;
+
+--Add trigger statement for when a cart is bought decrease squantity
+
+-------------------------------------------------------------------------------------------
+--Select statement shows products in stock
+SELECT PName, Price, ProductID FROM product WHERE squantity>0; 
+
 -------------------------------------------------------------------------------------------
 -- FILTER BY PTYPE
 
@@ -27,10 +47,9 @@ from product
 group by ptype;
 
 -- user can filter by category 
+select * from product
 
-select pname as Name, price as Price, pquantity as Quantity from product where ptype = 'tops';
+select pname as Name, price as Price, squantity as Quantity from product where ptype = 'tops';
 
 -------------------------------------------------------------------------------------------
 --RECEIVE SHIPMENT (increase the quantities of products) 
-
---HEY

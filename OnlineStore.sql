@@ -3,7 +3,7 @@
 --DROP SEQUENCE seqid;
 CREATE SEQUENCE seqID INCREMENT BY 1 START WITH 1;
 
---drop table customer;
+--drop table customer
 CREATE TABLE customer (
     accountid   int not null,
     fname    varchar2(15) not null,
@@ -85,6 +85,7 @@ CREATE TABLE cart_items(
     foreign key (productid) references product(productid)
 );
 
+--drop table reviews
 CREATE TABLE reviews(
     foreign key (productid) references invoice(invoiceid),
     
@@ -134,6 +135,7 @@ insert into recently_deleted_items(accountid, productid, psize, pquantity)
 values(:old.cartid, :old.productid, :old.psize, :old.pquantity);
 end;
 
+--drop table invoice_record_deleted_account;
 CREATE TABLE invoice_record_deleted_account(
     fname    varchar2(15) not null,
     lname    varchar2(15) not null,
@@ -145,7 +147,7 @@ CREATE TABLE invoice_record_deleted_account(
 
 INSERT into customer VALUES(0, 'invoice', 'history', 'n/a', NULL);
 
---drop trigger delete_product
+--drop trigger delete_account;
 create or replace trigger delete_account
 before delete on customer
 for each row 
@@ -160,5 +162,5 @@ begin
     end loop;
 end;
 
-
+--SELECT * FROM USER_CONSTRAINTS WHERE TABLE_NAME = 'customer';
 
