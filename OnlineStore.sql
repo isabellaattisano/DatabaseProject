@@ -21,7 +21,7 @@ CREATE TABLE address (
 	state	Char(2)	 NOT NULL,
 	zip	    Char(10) NOT NULL,
     primary key (street, accountid),
-    foreign key (accountid) references customer(accountid)
+    foreign key (accountid) references customer(accountid) ON DELETE CASCADE
 );
 
 --drop table payment;
@@ -32,7 +32,7 @@ CREATE TABLE payment (
     cardnumber varchar2(16),
     securitycode varchar2(4),
     primary key (cardnumber, accountid),
-    foreign key (accountid) references customer(accountid)
+    foreign key (accountid) references customer(accountid) ON DELETE CASCADE
 );
 
 --DROP SEQUENCE seqInvoice;
@@ -79,9 +79,9 @@ CREATE TABLE cart_items(
     cartid int not null,
     productid int not null,
     psize varchar(20) check (psize IN ('x-small', 'small', 'medium', 'large', 'x-large', 'onesize')),
-    pquanity int not null,
+    pquantity int not null,
     primary key (cartid, productid),
-    foreign key (cartid) references customer(accountid),
+    foreign key (cartid) references customer(accountid) ON DELETE CASCADE,
     foreign key (productid) references product(productid)
 );
 
@@ -98,11 +98,67 @@ CREATE TABLE reviews(
 );
 --drop table favorties 
 CREATE TABLE favorites(
+    accountid int not null,
+    productid int not null,
+    primary key (accountid, productid),
+    foreign key (accountid) references customer(accountid) ON DELETE CASCADE,
+    foreign key (productid) references product(productid)
 );
-
+--drop table recently_deleted_items;
+CREATE TABLE recently_deleted_items(
+    accountid int not null,
+    productid int not null,
+    psize varchar(20) check (psize IN ('x-small', 'small', 'medium', 'large', 'x-large', 'onesize')),
+    pquantity int not null,
+    primary key (accountid, productid),
+    foreign key (accountid) references customer(accountid) ON DELETE CASCADE,
+    foreign key (productid) references product(productid)
+);
 
 --drop view cart_view;
 CREATE View cart_view (cartid, totalprice) as 
 SELECT ci.cartid, sum(p.price*ci.pquanity)
 from product p NATURAL JOIN cart_items ci
 GROUP BY ci.cartid;
+
+
+-------------------------------------------------------------------------------------------
+
+-- TRIGGERS --
+--drop trigger delete_product
+create or replace trigger delete_product
+before delete on cart_items
+for each row 
+begin 
+insert into recently_deleted_items(accountid, productid, psize, pquantity) 
+values(:old.cartid, :old.productid, :old.psize, :old.pquantity);
+end;
+
+CREATE TABLE invoice_record_deleted_account(
+    fname    varchar2(15) not null,
+    lname    varchar2(15) not null,
+    email	 varchar2(100) not null,
+    invoiceid int not null
+);
+
+--customer accountid = 0 will be used to store a invoice history for deleted accounts 
+
+INSERT into customer VALUES(0, 'invoice', 'history', 'n/a', NULL);
+
+--drop trigger delete_product
+create or replace trigger delete_account
+before delete on customer
+for each row 
+begin 
+    for o in (select invoiceid, accountid from invoice where accountid = :old.accountid)
+    Loop
+       insert into invoice_record_deleted_account
+       values(:old.fname, :old.lname, :old.email, o.invoiceid);
+       
+       UPDATE invoice set accountid = 0 where accountid = :old.accountid;
+     
+    end loop;
+end;
+
+
+
