@@ -32,3 +32,5 @@ select pname as Name, price as Price, pquantity as Quantity from product where p
 
 -------------------------------------------------------------------------------------------
 --RECEIVE SHIPMENT (increase the quantities of products) 
+
+--HEY
