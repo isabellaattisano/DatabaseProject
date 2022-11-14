@@ -8,24 +8,46 @@ INSERT into customer VALUES(seqID.nextVal, 'customer', 'two', 'customertwo@gmail
 
 --create account 
 
+INSERT into customer VALUES(seqID.nextVal, 'Isabella', 'Attisano', 'iattisan@villanova.edu', '0123456789');
+
 --add address / payment 
 
 --add / remove items to cart
 
+-- recently deleted
+
+insert into cart_items VALUES(1, 15, 'small', 3);
+delete from cart_items where cartid = 1 and productid = 15;
+select * from recently_deleted_items;
+
 --see all product reviews 
 
---add items to favorites 
+--add items to favorites / get all favorited items 
 
 --get all items currently in cart / cart price 
 
 --place order
 
+INSERT into invoice Values(seqInvoice.nextVal, 3, 100);
+INSERT into invoice Values(seqInvoice.nextVal, 3, 500);
+INSERT into invoice_products Values(1, 1, 'large', 4);
+INSERT into invoice_products Values(2, 2, 'small', 1);
+
+
 --get order history 
+
+select * from invoice where accountid = 3;
 
 --add reviews 
 
 --delete account
 
+Delete from customer where accountid = 3;
+
+--invoice history should still be there 
+
+select ird.fname, ird.lname, ird.invoiceid from invoice_record_deleted_account ird;
+select * from invoice;
 -------------------------------------------------------------------------------------------
 
 --KAYLEIGH ACCOUNT 
@@ -57,6 +79,7 @@ select * from address;
 select * from payment;
 --delete from cart_items;
 select * from cart_items; 
+--delete from invoice;
 
 -- GENERAL USE CASES 
 
