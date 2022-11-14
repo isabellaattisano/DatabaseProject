@@ -82,9 +82,15 @@ WHERE accountID = 5;
 -- Insert 1 square neck blouse in size medium to cart
 INSERT INTO cart_items VALUES(5, 1, 'medium', 1);
 INSERT INTO cart_items VALUES(5, 3, 'medium', 1);
+INSERT INTO cart_items VALUES(5, 4, 'medium', 3);
 
 --Select statement to show items in Kayleigh's Cart
-select * from cart_items where cartID = 5;
+select Pname, ProductID Psize, Pquantity, Price from cart_items NATURAL JOIN product where cartID = 5;
+
+--Cart total price, number of items, number of different types of products
+select SUM(Price) as Total_Price, SUM(pquantity) as Total_Quantity_of_Items, COUNT( DISTINCT ProductID) as Product_Variety 
+FROM cart_items NATURAL JOIN product 
+where CartID = 5;
 
 -- Remove item from Kayleigh's cart
 DELETE FROM cart_items where cartid = 5 AND productID = 3;
