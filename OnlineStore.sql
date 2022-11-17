@@ -80,10 +80,12 @@ CREATE TABLE cart_items(
     productid int not null,
     psize varchar(20) check (psize IN ('x-small', 'small', 'medium', 'large', 'x-large', 'onesize')),
     pquantity int not null,
+    price int not null, 
     primary key (cartid, productid),
     foreign key (cartid) references customer(accountid) ON DELETE CASCADE,
     foreign key (productid) references product(productid)
 );
+
 
 --drop table reviews
 CREATE TABLE reviews(
@@ -133,7 +135,10 @@ for each row
 begin 
 insert into recently_deleted_items(accountid, productid, psize, pquantity) 
 values(:old.cartid, :old.productid, :old.psize, :old.pquantity);
+
 end;
+
+drop trigger 
 
 --drop table invoice_record_deleted_account;
 CREATE TABLE invoice_record_deleted_account(
@@ -163,4 +168,23 @@ begin
 end;
 
 --SELECT * FROM USER_CONSTRAINTS WHERE TABLE_NAME = 'customer';
+
+
+--drop sequence seqInvoice;
+create SEQUENCE seqInvoice INCREMENT BY 1 START WITH 0;
+
+--create invoice trigger
+create or replace trigger create_invoice
+before delete on cart_items
+FOR EACH ROW
+BEGIN
+    for o in (select cartid, price from cart_items where cartid = :old.cartid)
+    Loop
+       insert into invoice
+       values(seqInvoice.NEXTVAL, :old.cartid, :old.price);
+
+    end loop;
+END;
+
+--create view for invoice 
 
