@@ -13,6 +13,7 @@ INSERT into product VALUES(seqproduct.nextVal, 'Grey Mug LARGE', 'mugs', 12.99, 
 INSERT into product VALUES(seqproduct.nextVal, 'Stay Fine and Drink Wine', 'posters', 9.99, 2);
 
 select * from product
+
 -------------------------------------------------------------------------------------------
 -- Update stored quantity
 
@@ -32,6 +33,12 @@ WHERE ProductID = 2;
 --Select statement shows products in stock
 SELECT PName, Price, ProductID FROM product WHERE squantity>0; 
 
+-------------------------------------------------------------------------------------------
+--Categorize by Price
+--Perfect gifts under 30$
+SELECT PName, ProductID, Price FROM product WHERE Price < 30;
+
+--Add more price options
 -------------------------------------------------------------------------------------------
 -- FILTER BY PTYPE
 
@@ -53,3 +60,4 @@ select pname as Name, price as Price, squantity as Quantity from product where p
 
 -------------------------------------------------------------------------------------------
 --RECEIVE SHIPMENT (increase the quantities of products) 
+

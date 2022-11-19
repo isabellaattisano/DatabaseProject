@@ -1,5 +1,4 @@
 --Database Schema 
-
 --DROP SEQUENCE seqid;
 CREATE SEQUENCE seqID INCREMENT BY 1 START WITH 1;
 
@@ -74,15 +73,23 @@ CREATE TABLE product(
 ALTER TABLE invoice_products 
 ADD CONSTRAINT fk_invoice foreign key (productid) references product(productid);
 
+CREATE SEQUENCE seqCart INCREMENT
+--drop table cart
+CREATE TABLE cart(
+    cartid int not null,
+    primary key (cartid),
+    foreign key (cartid) references customer(accountid) ON DELETE CASCADE
+);
+
 --drop table cart_Items;
 CREATE TABLE cart_items(
     cartid int not null,
     productid int not null,
     psize varchar(20) check (psize IN ('x-small', 'small', 'medium', 'large', 'x-large', 'onesize')),
     pquantity int not null,
-    price int not null, 
+    price DECIMAL(10,2), 
     primary key (cartid, productid),
-    foreign key (cartid) references customer(accountid) ON DELETE CASCADE,
+    foreign key (cartid) references customer(accountID) ON DELETE CASCADE,
     foreign key (productid) references product(productid)
 );
 
@@ -171,20 +178,57 @@ end;
 
 
 --drop sequence seqInvoice;
-create SEQUENCE seqInvoice INCREMENT BY 1 START WITH 0;
+create SEQUENCE seqInvoice INCREMENT BY 1 START WITH 1;
 
 --create invoice trigger
-create or replace trigger create_invoice
-before delete on cart_items
-FOR EACH ROW
-BEGIN
-    for o in (select cartid, price from cart_items where cartid = :old.cartid)
-    Loop
-       insert into invoice
-       values(seqInvoice.NEXTVAL, :old.cartid, :old.price);
+--create or replace trigger create_invoice
+--before delete on cart_items
+--FOR EACH ROW
+--BEGIN
+  --  for o in (select cartid, price from cart_items where cartid = :old.cartid)
+    --Loop
+      -- insert into invoice
+       --values(seqInvoice.NEXTVAL, :old.cartid, :old.price);
 
-    end loop;
-END;
+    --end loop;
+--END;
 
 --create view for invoice 
 
+--
+
+--Create trigger to create cart when account it created 
+--drop trigger create_cart
+CREATE or REPLACE TRIGGER create_cart
+AFTER INSERT ON customer
+FOR EACH ROW
+BEGIN 
+insert into cart(cartid) values(:new.accountid);
+END;
+
+--Create trigger to delete cart when account is deleted!!
+
+--Create trigger than before cart deleted, you get cartid and then loop through items and add to invoice history
+        
+create or replace trigger create_invoice
+before delete on cart
+FOR EACH ROW
+BEGIN
+    insert into invoice(invoiceid, accountid, totalprice) values(seqInvoice.NEXTVAL, :old.cartid, 0.00);
+    for o in (select * from cart_items c where cartid = :old.cartid)
+    Loop
+        insert into invoice_products values (seqInvoice.currval, o.productid, o.psize, o.pquantity);
+        update invoice set totalprice = totalprice + o.price where o.cartid = :old.cartid;
+    end loop;
+    delete from cart_items where cartid = :old.cartid;
+END;
+
+
+select * from invoice_products
+
+--drop trigger create_invoice
+--create view for invoice 
+select * from cart_items
+
+--
+    
