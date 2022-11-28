@@ -12,7 +12,18 @@ INSERT into product VALUES(seqproduct.nextVal, 'Monopoly', 'board games', 25.95,
 INSERT into product VALUES(seqproduct.nextVal, 'Grey Mug LARGE', 'mugs', 12.99, 2);
 INSERT into product VALUES(seqproduct.nextVal, 'Stay Fine and Drink Wine', 'posters', 9.99, 2);
 
-select * from product
+
+-------------------------------------------------------------------------------------------
+--Display Products 
+
+--all products 
+select * from product;
+
+--Select statement shows products in stock
+SELECT Pname, Price, ProductID FROM product WHERE pquantity>0; 
+
+-- View all out of stock products 
+select * from product where pquantity = 0;
 
 -------------------------------------------------------------------------------------------
 -- Update stored quantity
@@ -36,25 +47,24 @@ UPDATE product
 SET squantity = 15
 WHERE ProductID = 5;
 
-
---Add trigger statement for when a cart is bought decrease squantity
-
 -------------------------------------------------------------------------------------------
---Select statement shows products in stock
-SELECT PName, Price, ProductID FROM product WHERE squantity>0; 
+--Filter (clothing v. homegoods) by Price
 
--------------------------------------------------------------------------------------------
---Categorize by Price
+--Price High to Low
+
+--Price Low to High 
+
 --Perfect gifts under 30$
 SELECT PName, ProductID, Price FROM product WHERE Price < 30;
 
---Add more price options
 -------------------------------------------------------------------------------------------
--- FILTER BY PTYPE
+-- FILTER BY TYPE 
 
---list all product types 
+--view homegoods
+select * from product where ptype in ('mugs', 'board games', 'posters', 'phone cases');
 
-SELECT distinct ptype as ProductType from product;
+--view clothing
+select * from product where ptype not in ('mugs', 'board games', 'posters', 'phone cases');
 
 
 -- Select Statement indicating the quantity of products there are of each type 
@@ -62,12 +72,3 @@ SELECT distinct ptype as ProductType from product;
 SELECT ptype, count(ptype) as Quantity
 from product
 group by ptype;
-
--- user can filter by category 
-select * from product
-
-select pname as Name, price as Price, squantity as Quantity from product where ptype = 'tops';
-
--------------------------------------------------------------------------------------------
---RECEIVE SHIPMENT (increase the quantities of products) 
-
