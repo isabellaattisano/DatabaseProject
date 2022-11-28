@@ -130,6 +130,9 @@ INSERT INTO favorites VALUES(8, 5);
 -- Shows Kayleigh's favorited items
 SELECT pname, ptype, productid, price FROM favorites NATURAL JOIN product WHERE accountid = 8;
 
+--Delete Kayleigh's account 
+delete from customer where accountid = 5
+
 -------------------------------------------------------------------------------------------
 
 --CAMRYN ACCOUNT 
