@@ -30,21 +30,21 @@ select * from product where pquantity = 0;
 
 -- Square neck blouse updated to a stored quantity of 30
 UPDATE product 
-SET squantity = 30
+SET pquantity = 30
 WHERE ProductID = 1;
 
 -- Oversized Sweater updated to a stored quantity of 0
 UPDATE product 
-SET squantity = 0
+SET pquantity = 0
 WHERE ProductID = 2;
 
 -- Plaid Mini Skirt updated to stored quantity of 100
 UPDATE product
-SET squantity = 100 
+SET pquantity = 100 
 WHERE ProductID = 4;
 -- Jacket updated to stored quantity of 15
 UPDATE product 
-SET squantity = 15
+SET pquantity = 15
 WHERE ProductID = 5;
 
 -------------------------------------------------------------------------------------------
