@@ -1,18 +1,28 @@
+--HELPFUL STATEMENTS
+
+--delete from customer;
+select * from customer;
+--delete from product;
+select * from product;
+--delete from address;
+select * from address;
+--delete from payment;
+select * from payment;
+--delete from cart_items;
+select * from cart_items; 
+--delete from invoice;
+select * from invoice;
+--delete from invoice_record_deleted_account;
+select * from invoice_record_deleted_account;
+
+-------------------------------------------------------------------------------------------
+
 -- Random Accounts 
 
 INSERT into customer VALUES(seqID.nextVal, 'customer', 'one', 'customerone@gmail.com', '0123456789');
 INSERT into customer VALUES(seqID.nextVal, 'customer', 'two', 'customertwo@gmail.com', '0123456789');
-
 INSERT into customer VALUES(seqID.nextVal, 'Mary', 'Smith', 'Mary234@icloud.com', '1923347659');
 
-insert into cart_items Values(23, 4, 'large', 1, 25)
-update cart set cartid = 23 where cartid = 23
-
-
-select * from cart_items
-select * from invoice
-select * from cart
-select * from customer
 -------------------------------------------------------------------------------------------
 --BELLA ACCOUNT 
 
@@ -23,14 +33,6 @@ INSERT into customer VALUES(seqID.nextVal, 'Isabella', 'Attisano', 'iattisan@vil
 --add address / payment 
 
 --add / remove items to cart
-
--- recently deleted
-
-insert into cart_items VALUES(1, 15, 'small', 3);
-delete from cart_items where cartid = 1 and productid = 15;
---select * from cart_items where cartid = 61 and productid = 21;
-select * from recently_deleted_items;
-
 
 
 --see all product reviews 
@@ -55,7 +57,7 @@ select * from invoice where accountid = 3;
 
 --delete account
 
-Delete from customer where accountid = 3;
+Delete from customer where accountid = 105;
 
 --invoice history should still be there 
 
@@ -120,9 +122,6 @@ where CartID = 5;
 -- Remove item from Kayleigh's cart
 DELETE FROM cart_items where cartid = 8 AND productID = 3;
 
--- View recently deleted items from Kayleigh's cart
-SELECT * FROM recently_deleted_items where accountid = 8;
-
 -- Add to favorites
 INSERT INTO favorites VALUES(8, 2);
 INSERT INTO favorites VALUES(8, 5);
@@ -144,28 +143,9 @@ delete from customer where accountid = 5
 --create account 
 
 INSERT into customer VALUES(seqID.nextVal, 'Caitlin', 'van Goeverden', 'cvg@gmail.com', '4562348908');
-
+insert into cart_items values(142, 15, 'large', 3);
+delete from customer where accountid = 142;
 --add address / payment 
 INSERT INTO address(accountid, street, city, state, zip) VALUES('121', 'Lancaster', 'Villanova', 'PA', '19085');
 INSERT INTO payment(accountid, expmonth, expyear, cardnumber, securitycode) VALUES('121', '02', '23', '1234567890123456', '1234');
 
--------------------------------------------------------------------------------------------
---delete from customer;
-select * from customer;
---delete from product;
-select * from product;
---delete from address;
-select * from address;
---delete from payment;
-select * from payment;
---delete from cart_items;
-select * from cart_items; 
---delete from invoice;
-
--- GENERAL USE CASES 
-
--- see all product reviews 
-
--- how we can filter products 
-
--- inventory 
