@@ -92,12 +92,18 @@ WHERE accountID = 8;
 
 -- Add items to cart
 -- Insert 1 square neck blouse in size medium to cart
-INSERT INTO cart_items VALUES(8, 1, 'medium', 1, 19.95);
-INSERT INTO cart_items VALUES(8, 3, 'medium', 1, 49.95);
-INSERT INTO cart_items VALUES(8, 4, 'medium', 3, 25);
+INSERT INTO cart_items VALUES(5, 1, 'medium', 1, 19.95);
+INSERT INTO cart_items VALUES(5, 3, 'medium', 1, 49.95);
+INSERT INTO cart_items VALUES(5, 4, 'medium', 3, 25);
+
+--fix total price input 
+Update cart_items set price = 75 where cartid = 5 and productid = 4
+
+Update cart_items set pquantity = 2 where cartid = 5 and productid = 4
+Update cart_items set price = 50 where cartid = 5 and productid = 4
 
 select * from cart
-select * from cart_items where cartid = 8
+select * from cart_items where cartid = 5
 --delete kayleighs cart it will then cause trigger which will store cart as an invoice and items of cart as an invoice
 delete from cart where cartid = 8
 select * from invoice where accountid = 8

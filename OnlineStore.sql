@@ -224,7 +224,6 @@ BEGIN
     delete from cart_items where cartid = :old.cartid;
 END;
 
-
 select * from invoice_products
 
 --drop trigger create_invoice

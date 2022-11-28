@@ -27,6 +27,16 @@ UPDATE product
 SET squantity = 0
 WHERE ProductID = 2;
 
+-- Plaid Mini Skirt updated to stored quantity of 100
+UPDATE product
+SET squantity = 100 
+WHERE ProductID = 4;
+-- Jacket updated to stored quantity of 15
+UPDATE product 
+SET squantity = 15
+WHERE ProductID = 5;
+
+
 --Add trigger statement for when a cart is bought decrease squantity
 
 -------------------------------------------------------------------------------------------
