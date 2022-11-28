@@ -3,6 +3,15 @@
 INSERT into customer VALUES(seqID.nextVal, 'customer', 'one', 'customerone@gmail.com', '0123456789');
 INSERT into customer VALUES(seqID.nextVal, 'customer', 'two', 'customertwo@gmail.com', '0123456789');
 
+INSERT into customer VALUES(seqID.nextVal, 'Mary', 'Smith', 'Mary234@icloud.com', '1923347659');
+
+insert into cart_items Values(23, 4, 'large', 1, 25)
+update cart set cartid = 23 where cartid = 23
+
+
+select * from cart_items
+select * from invoice
+select * from cart
 select * from customer
 -------------------------------------------------------------------------------------------
 --BELLA ACCOUNT 

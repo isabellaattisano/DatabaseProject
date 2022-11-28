@@ -211,7 +211,7 @@ END;
 --Create trigger than before cart deleted, you get cartid and then loop through items and add to invoice history
         
 create or replace trigger create_invoice
-before delete on cart
+after update on cart
 FOR EACH ROW
 BEGIN
     insert into invoice(invoiceid, accountid, totalprice) values(seqInvoice.NEXTVAL, :old.cartid, 0.00);
@@ -219,6 +219,7 @@ BEGIN
     Loop
         insert into invoice_products values (seqInvoice.currval, o.productid, o.psize, o.pquantity);
         update invoice set totalprice = totalprice + o.price where o.cartid = :old.cartid;
+        update product set squantity = squantity - o.pquantity where productid = o.productid;
     end loop;
     delete from cart_items where cartid = :old.cartid;
 END;
