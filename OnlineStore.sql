@@ -110,6 +110,20 @@ CREATE TABLE invoice_record_deleted_account(
     invoiceid int not null
 );
 
+--drop table reviews
+CREATE TABLE reviews(
+    accountid int not null,
+    productid int not null,
+    age int not null,
+    feet int not null,
+    inches int not null check(inches<=11),
+    rating int not null check(rating<5 AND rating>1),
+    sizedesc varchar(20) check(sizedesc IN ('Runs Small', 'True to Size', 'Runs Large')),
+    recommend varchar(20) check(recommend IN ('Yes', 'No')),
+    primary key(productid, accountid),
+    foreign key (productid) references product(productid) ON DELETE CASCADE
+);
+
 -------------------------------------------------------------------------------------------
 
 -- TRIGGERS --

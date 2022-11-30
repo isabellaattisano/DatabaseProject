@@ -145,6 +145,16 @@ select * from invoice where accountid = 6
 --Check invoice products purchased
 select * from invoice_products where invoiceid = 1
 
+select * from product
+--Create a review for Kayleigh
+INSERT into reviews Values(6, 14, 20, 5, 9, 4, 'True to Size', 'Yes');
+
+--Check Kayleigh's reviews
+select age, feet ||' foot '|| inches as height, rating ||''|| ' out of 5' as Overall_Rating, sizedesc, recommend from reviews where accountid = 6;
+
+--Check all reviews for a product
+select age, feet ||' foot '|| inches as height, rating ||''|| ' out of 5' as Overall_Rating, sizedesc, recommend from reviews where productid = 14;
+
 --Select statement to show items in Kayleigh's Cart
 select Pname, ProductID Psize, Pquantity, Price from cart_items NATURAL JOIN product where cartID = 6;
 
