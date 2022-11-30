@@ -57,23 +57,43 @@ WHERE ProductID = 5;
 --Filter (clothing v. homegoods) by Price
 
 --Price High to Low
+select * from product where ptype not in ('mugs', 'board games', 'posters', 'phone cases', 'candles') and pquantity > 0 order by price asc;
+select * from product where ptype in ('mugs', 'board games', 'posters', 'phone cases', 'candles') and pquantity > 0 order by price asc;
+
 
 --Price Low to High 
+select * from product where ptype not in ('mugs', 'board games', 'posters', 'phone cases', 'candles') and pquantity > 0 order by price asc;
+select * from product where ptype in ('mugs', 'board games', 'posters', 'phone cases', 'candles') and pquantity > 0 order by price asc;
+
 
 --Perfect gifts under 30$
-SELECT PName, ProductID, Price FROM product WHERE Price < 30;
+SELECT PName, ProductID, Price FROM product WHERE Price < 30 and pquantity > 0;
 
--------------------------------------------------------------------------------------------
--- FILTER BY TYPE 
+select * from product where pquantity > 0 and ptype = 'tops' and price<=30 and pquantity > 0;
+
+--FILTER BY TYPE 
 
 --view homegoods
-select * from product where ptype in ('mugs', 'board games', 'posters', 'phone cases');
+select * from product where ptype in ('mugs', 'board games', 'posters', 'phone cases') and pquantity > 0;
 
 --view clothing
-select * from product where ptype not in ('mugs', 'board games', 'posters', 'phone cases');
+select * from product where ptype not in ('mugs', 'board games', 'posters', 'phone cases') and pquantity > 0;
 
-select * from product
+select * from product where ptype = 'mugs' and pquantity > 0;
+select * from product where ptype = 'board games' and pquantity > 0;
+select * from product where ptype = 'posters' and pquantity > 0;
+select * from product where ptype = 'phone cases' and pquantity > 0;
+select * from product where ptype = 'candles' and pquantity > 0;
 
+
+select * from product where ptype = 'tops' and pquantity > 0;
+select * from product where ptype = 'bottoms' and pquantity > 0;
+select * from product where ptype = 'accessories' and pquantity > 0;
+select * from product where ptype = 'outerwear' and pquantity > 0;
+select * from product where ptype = 'dresses' and pquantity > 0;
+
+
+-------------------------------------------------------------------------------------------
 -- Select Statement indicating the quantity of products there are of each type 
 
 SELECT ptype, count(ptype) as Quantity
