@@ -23,13 +23,43 @@ INSERT into customer VALUES(seqID.nextVal, 'customer', 'one', 'customerone@gmail
 INSERT into customer VALUES(seqID.nextVal, 'customer', 'two', 'customertwo@gmail.com', '0123456789');
 INSERT into customer VALUES(seqID.nextVal, 'Mary', 'Smith', 'Mary234@icloud.com', '1923347659');
 
+--Sarah's Account
+INSERT into customer VALUES(seqID.nextVal, 'Sarah', 'Jones', 'Sjones@me.com', '3274828342');
+
+--Sarah's cards
+INSERT into payment Values(4, 4, 2025, '1111222233334444', '012');
+INSERT into payment Values(4, 9, 2032, '1234123412341234', '914');
+
+--View Sarah's payment options
+select expMonth ||'/'|| expYear AS Expiration_Date, '************'||''||SUBSTR(cardnumber, 12, 4) AS Card_Number 
+FROM payment 
+WHERE accountID = 4;
+
+--View How many forms of payment Sarah has
+select count(cardnumber) as Number_of_payments from payment where accountid = 4
+
+--Sarah's addresses
+INSERT into address Values(4, '398 Brick Road', 'Tampa', 'FL', '25013');
+INSERT into address Values(4, '511 Greenwich Ave', 'New York', 'NY', '82315');
+
+-- View Sarah's addresses
+SELECT Street ||' '|| City ||' '|| State ||' '|| Zip as Addresses 
+FROM address 
+WHERE accountID = 4;
+
+-- Add items to cart 
+INSERT into cart_items Values(4, 6, 'small', 1, 14.95);
+INSERT into cart_items Values(4, 1, 'medium', 2, 39.90);
+
+-- View cart items
+select * from cart_items where cartid = 4;
+
 -------------------------------------------------------------------------------------------
 --BELLA ACCOUNT 
 
 --create account 
 
 INSERT into customer VALUES(seqID.nextVal, 'Isabella', 'Attisano', 'iattisan@villanova.edu', '0123456789');
-
 --add address / payment 
 
 --add / remove items to cart
@@ -66,68 +96,72 @@ select * from invoice;
 -------------------------------------------------------------------------------------------
 
 -- KAYLEIGH ACCOUNT 
--- Create account with ID 5
-
+-- Create accounts with ID 6, 7
 INSERT INTO customer VALUES(seqID.nextVal, 'Kayleigh', 'DiNatale', 'kwd@villanova.edu', '9141234567');
 INSERT INTO customer VALUES(seqID.nextVal, 'Regan', 'DiNatale', 'rdin@ohiostate.edu', '9178342938');
 
 -- Add addresses to Kayleigh's account
--- select * from address where accountid = 8
-INSERT INTO address VALUES(8, '123 Green St', 'Philadelphia', 'PA', '10456');
-INSERT INTO address VALUES(8, '50 Highbrook Rd', 'Binghamton', 'NY', '45231');
+INSERT INTO address VALUES(6, '123 Green St', 'Philadelphia', 'PA', '10456');
+INSERT INTO address VALUES(6, '50 Highbrook Rd', 'Binghamton', 'NY', '45231');
 
 
 -- View Kayleigh's address options
 SELECT Street ||' '|| City ||' '|| State ||' '|| Zip as Addresses 
 FROM address 
-WHERE accountID = 8;
+WHERE accountID = 6;
 
 -- ADD payments to Kayleigh's account
-INSERT INTO payment VALUES(8, 2, 2028, '5555444433332222', '123');
-INSERT INTO payment VALUES(8, 1, 2021, '1234567891234567', '423');
+INSERT INTO payment VALUES(6, 2, 2028, '5555444433332222', '123');
+INSERT INTO payment VALUES(6, 1, 2021, '1234567891234567', '423');
 
-select * from payment where accountid = 8
 -- View Kayleigh's payment options
 select expMonth ||'/'|| expYear AS Expiration_Date, '************'||''||SUBSTR(cardnumber, 12, 4) AS Card_Number 
 FROM payment 
-WHERE accountID = 8;
+WHERE accountID = 6;
 
 -- Add items to cart
--- Insert 1 square neck blouse in size medium to cart
-INSERT INTO cart_items VALUES(5, 1, 'medium', 1, 19.95);
-INSERT INTO cart_items VALUES(5, 3, 'medium', 1, 49.95);
-INSERT INTO cart_items VALUES(5, 4, 'medium', 3, 25);
+INSERT INTO cart_items VALUES(6, 1, 'medium', 1, 19.95);
+INSERT INTO cart_items VALUES(6, 3, 'medium', 1, 49.95);
+INSERT INTO cart_items VALUES(6, 4, 'medium', 3, 25);
+
+-- View Kayleigh's current cart
+select * from cart_items where cartid = 6;
 
 --fix total price input 
-Update cart_items set price = 75 where cartid = 5 and productid = 4
+Update cart_items set price = 75 where cartid = 6 and productid = 4;
 
-Update cart_items set pquantity = 2 where cartid = 5 and productid = 4
-Update cart_items set price = 50 where cartid = 5 and productid = 4
+-- Change quantity, change price
+Update cart_items set pquantity = 2 where cartid = 6 and productid = 4;
+Update cart_items set price = 50 where cartid = 6 and productid = 4;
 
-select * from cart
-select * from cart_items where cartid = 5
---delete kayleighs cart it will then cause trigger which will store cart as an invoice and items of cart as an invoice
-delete from cart where cartid = 8
-select * from invoice where accountid = 8
-select * from invoice_products where invoiceid = 7
+select * from cart_items where cartid = 6
+
+--Update kayleigh cart to cause purchase and store in invoice
+Update cart set cartid = 6 where cartid = 6;
+
+-- Check trigger worked for kayleigh's invoice
+select * from invoice where accountid = 6
+
+--Check invoice products purchased
+select * from invoice_products where invoiceid = 1
 
 --Select statement to show items in Kayleigh's Cart
-select Pname, ProductID Psize, Pquantity, Price from cart_items NATURAL JOIN product where cartID = 8;
+select Pname, ProductID Psize, Pquantity, Price from cart_items NATURAL JOIN product where cartID = 6;
 
 --Cart total price, number of items, number of different types of products
 select SUM(Price) as Total_Price, SUM(pquantity) as Total_Quantity_of_Items, COUNT( DISTINCT ProductID) as Product_Variety 
 FROM cart_items NATURAL JOIN product 
-where CartID = 5;
+where CartID = 6;
 
 -- Remove item from Kayleigh's cart
-DELETE FROM cart_items where cartid = 8 AND productID = 3;
+DELETE FROM cart_items where cartid = 6 AND productID = 3;
 
 -- Add to favorites
-INSERT INTO favorites VALUES(8, 2);
-INSERT INTO favorites VALUES(8, 5);
+INSERT INTO favorites VALUES(6, 2);
+INSERT INTO favorites VALUES(6, 5);
 
 -- Shows Kayleigh's favorited items
-SELECT pname, ptype, productid, price FROM favorites NATURAL JOIN product WHERE accountid = 8;
+SELECT pname, ptype, productid, price FROM favorites NATURAL JOIN product WHERE accountid = 6;
 
 --Delete Kayleigh's account 
 delete from customer where accountid = 5

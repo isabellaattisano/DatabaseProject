@@ -12,6 +12,12 @@ INSERT into product VALUES(seqproduct.nextVal, 'Monopoly', 'board games', 25.95,
 INSERT into product VALUES(seqproduct.nextVal, 'Grey Mug LARGE', 'mugs', 12.99, 2);
 INSERT into product VALUES(seqproduct.nextVal, 'Stay Fine and Drink Wine', 'posters', 9.99, 2);
 
+INSERT into product VALUES(seqproduct.nextVal, 'Cream Cable Knit Sweater', 'tops', 35.50, 20);
+INSERT into product VALUES(seqproduct.nextVal, 'Paisley Midi Skirt', 'bottoms', 55.95, 34);
+INSERT into product VALUES(seqproduct.nextVal, 'Black Head Band', 'accessories', 8.45, 14);
+INSERT into product VALUES(seqproduct.nextVal, '3pck Pink Claw Clips', 'accessories', 10.00, 25);
+INSERT into product VALUES(seqproduct.nextVal, 'Black Velvet Strapless Dress', 'dresses', 75.50, 12);
+
 
 -------------------------------------------------------------------------------------------
 --Display Products 
@@ -66,9 +72,12 @@ select * from product where ptype in ('mugs', 'board games', 'posters', 'phone c
 --view clothing
 select * from product where ptype not in ('mugs', 'board games', 'posters', 'phone cases');
 
+select * from product
 
 -- Select Statement indicating the quantity of products there are of each type 
 
 SELECT ptype, count(ptype) as Quantity
 from product
 group by ptype;
+
+select * from product

@@ -73,7 +73,6 @@ CREATE TABLE product(
 ALTER TABLE invoice_products 
 ADD CONSTRAINT fk_invoice foreign key (productid) references product(productid) on delete cascade;
 
-
 --drop table cart
 CREATE TABLE cart(
     cartid int not null,
@@ -94,7 +93,7 @@ CREATE TABLE cart_items(
 );
 
 
---drop table favorties 
+--drop table favorites 
 CREATE TABLE favorites(
     accountid int not null,
     productid int not null,
