@@ -53,7 +53,7 @@ CREATE TABLE invoice_products(
     psize varchar(20) check (psize IN ('x-small', 'small', 'medium', 'large', 'x-large', 'onesize')),
     pquanity int not null,
     primary key (invoiceid, productid),
-    foreign key (invoiceid) references invoice(invoiceid)
+    foreign key (invoiceid) references invoice(invoiceid) ON DELETE CASCADE
 );
 
 --drop sequence seqProduct;
