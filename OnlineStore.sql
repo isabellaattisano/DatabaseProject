@@ -116,7 +116,7 @@ CREATE TABLE reviews(
     productid int not null,
     age int not null,
     feet int not null,
-    inches int not null check(inches<=11),
+    inches int check(inches<=11),
     rating int not null check(rating<5 AND rating>1),
     sizedesc varchar(20) check(sizedesc IN ('Runs Small', 'True to Size', 'Runs Large')),
     recommend varchar(20) check(recommend IN ('Yes', 'No')),
