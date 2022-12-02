@@ -172,7 +172,7 @@ BEGIN
     
         else
             insert into invoice_products values (currseq, o.productid, o.psize, o.pquantity);
-            update invoice set totalprice = totalprice + o.price where o.cartid = :old.cartid;
+            update invoice set totalprice = totalprice + o.price*o.pquantity where o.cartid = :old.cartid;
             update product set pquantity = pquantity - o.pquantity where productid = o.productid;
         end if;
     end loop;

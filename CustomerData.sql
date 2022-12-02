@@ -14,6 +14,8 @@ select * from cart_items;
 select * from invoice;
 --delete from invoice_record_deleted_account;
 select * from invoice_record_deleted_account;
+--delete from invoice_products
+select * from invoice_products
 
 -------------------------------------------------------------------------------------------
 
@@ -49,10 +51,18 @@ WHERE accountID = 4;
 
 -- Add items to cart 
 INSERT into cart_items Values(4, 6, 'small', 1, 14.95);
-INSERT into cart_items Values(4, 1, 'medium', 2, 39.90);
+INSERT into cart_items Values(4, 1, 'medium', 2, 19.95);
 
 -- View cart items
 select * from cart_items where cartid = 4;
+
+-- Purchase cart items 
+update cart set cartid = 4 where cartid = 4;
+
+--View invoice
+select * from invoice where accountid = 4
+select * from invoice_products where invoiceid = 1
+
 
 -------------------------------------------------------------------------------------------
 --BELLA ACCOUNT 

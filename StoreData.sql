@@ -36,22 +36,28 @@ select * from product where pquantity = 0;
 
 -- Square neck blouse updated to a stored quantity of 30
 UPDATE product 
-SET pquantity = 30
+SET pquantity = 200
 WHERE ProductID = 1;
 
 -- Oversized Sweater updated to a stored quantity of 0
 UPDATE product 
-SET pquantity = 0
+SET pquantity = 110
 WHERE ProductID = 2;
 
 -- Plaid Mini Skirt updated to stored quantity of 100
 UPDATE product
-SET pquantity = 100 
+SET pquantity = 140
 WHERE ProductID = 4;
 -- Jacket updated to stored quantity of 15
 UPDATE product 
-SET pquantity = 15
+SET pquantity = 190
 WHERE ProductID = 5;
+
+UPDATE product 
+SET pquantity = 90
+WHERE ProductID = 6;
+
+select * from product
 
 -------------------------------------------------------------------------------------------
 --Filter (clothing v. homegoods) by Price
