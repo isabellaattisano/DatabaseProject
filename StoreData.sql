@@ -18,7 +18,34 @@ INSERT into product VALUES(seqproduct.nextVal, 'Black Head Band', 'accessories',
 INSERT into product VALUES(seqproduct.nextVal, '3pck Pink Claw Clips', 'accessories', 10.00, 25);
 INSERT into product VALUES(seqproduct.nextVal, 'Black Velvet Strapless Dress', 'dresses', 75.50, 12);
 
+INSERT into product VALUES(seqproduct.nextVal, 'Vintage Coca Cola Santa Tee', 'tops', 39.00, 50);
+INSERT into product VALUES(seqproduct.nextVal, 'Brown Low-Rise Cargo Pant', 'bottoms', 79.00, 75);
+INSERT into product VALUES(seqproduct.nextVal, 'Grey Lace-Trim Lounge Pants', 'bottoms', 49.00, 40);
+INSERT into product VALUES(seqproduct.nextVal, 'Grey Lace-Trim Loung Top', 'tops', 31.00, 40);
+INSERT into product VALUES(seqproduct.nextVal, 'Black Leather Flare Pant', 'bottoms', 99.00, 30);
 
+INSERT into product VALUES(seqproduct.nextVal, 'Champion Pink Hoodie Sweatshirt', 'tops', 60.00, 50);
+INSERT into product VALUES(seqproduct.nextVal, 'Flannel Distressed Button-Down Shirt', 'tops', 49.00, 80);
+INSERT into product VALUES(seqproduct.nextVal, 'Cropped Fitted Pinstripe Vest', 'tops', 49.00, 25);
+INSERT into product VALUES(seqproduct.nextVal, 'Read Lace Babydoll Mini Dress', 'dresses', 69.00, 30);
+INSERT into product VALUES(seqproduct.nextVal, 'Cowl Neck Slip Dress', 'dresses', 49.00, 30);
+
+INSERT into product VALUES(seqproduct.nextVal, 'Sequin Mini Dress', 'dresses', 79.00, 30);
+INSERT into product VALUES(seqproduct.nextVal, 'Lace-Trim Floral Midi Dress', 'dresses', 59.00, 30);
+INSERT into product VALUES(seqproduct.nextVal, 'Faux Leather Blazer', 'outerwear', 99.00, 25);
+INSERT into product VALUES(seqproduct.nextVal, 'North Face 1996 Retro Nutpse Jacket', 'outerwear', 320.00, 40);
+INSERT into product VALUES(seqproduct.nextVal, 'Colorblock Windbreaker Jacket', 'outerwear', 69.00, 40);
+
+INSERT into product VALUES(seqproduct.nextVal, 'Corduroy Bomber Jacket', 'outerwear', 110.00, 40);
+INSERT into product VALUES(seqproduct.nextVal, 'Light Blue Beanie', 'accessories', 27.00, 30);
+INSERT into product VALUES(seqproduct.nextVal, 'Olive Cable Knit Sock', 'accessories', 16.00, 30);
+INSERT into product VALUES(seqproduct.nextVal, 'BAGGU Big Reusable Tote Bag', 'accessories', 18.00, 30);
+INSERT into product VALUES(seqproduct.nextVal, 'Black Bow Seam Tight', 'accessories', 17.00, 30);
+
+
+
+
+select * from product
 -------------------------------------------------------------------------------------------
 --Display Products 
 
