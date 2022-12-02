@@ -117,8 +117,8 @@ CREATE TABLE reviews(
     age int not null,
     feet int not null,
     inches int check(inches<=11),
-    rating int not null check(rating<5 AND rating>1),
-    sizedesc varchar(20) check(sizedesc IN ('Runs Small', 'True to Size', 'Runs Large')),
+    rating int not null check(rating<=5 AND rating>=1),
+    sizedesc varchar(20) check(sizedesc IN ('Runs Small', 'True to Size', 'Runs Large', 'One Size')),
     recommend varchar(20) check(recommend IN ('Yes', 'No')),
     primary key(productid, accountid),
     foreign key (productid) references product(productid) ON DELETE CASCADE

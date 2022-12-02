@@ -134,17 +134,15 @@ INSERT INTO cart_items VALUES(6, 1, 'medium', 1, 19.95);
 INSERT INTO cart_items VALUES(6, 3, 'medium', 1, 49.95);
 INSERT INTO cart_items VALUES(6, 4, 'medium', 3, 25);
 
+select * from product
 -- View Kayleigh's current cart
 select * from cart_items where cartid = 6;
 
---fix total price input 
-Update cart_items set price = 75 where cartid = 6 and productid = 4;
+--Select statement to show items in Kayleigh's Cart
+select Pname, ProductID, Psize, Pquantity, Price from cart_items NATURAL JOIN product where cartID = 6;
 
--- Change quantity, change price
+-- Change quantity
 Update cart_items set pquantity = 2 where cartid = 6 and productid = 4;
-Update cart_items set price = 50 where cartid = 6 and productid = 4;
-
-select * from cart_items where cartid = 6
 
 --Update kayleigh cart to cause purchase and store in invoice
 Update cart set cartid = 6 where cartid = 6;
@@ -153,7 +151,7 @@ Update cart set cartid = 6 where cartid = 6;
 select * from invoice where accountid = 6
 
 --Check invoice products purchased
-select * from invoice_products where invoiceid = 1
+select * from invoice_products where invoiceid = 4
 
 select * from product
 --Create a review for Kayleigh
@@ -165,16 +163,20 @@ select age, feet ||' foot '|| inches as height, rating ||''|| ' out of 5' as Ove
 --Check all reviews for a product
 select age, feet ||' foot '|| inches as height, rating ||''|| ' out of 5' as Overall_Rating, sizedesc, recommend from reviews where productid = 14;
 
---Select statement to show items in Kayleigh's Cart
-select Pname, ProductID Psize, Pquantity, Price from cart_items NATURAL JOIN product where cartID = 6;
-
 --Cart total price, number of items, number of different types of products
 select SUM(Price) as Total_Price, SUM(pquantity) as Total_Quantity_of_Items, COUNT( DISTINCT ProductID) as Product_Variety 
 FROM cart_items NATURAL JOIN product 
 where CartID = 6;
 
+--Add to cart
+INSERT into cart_items Values(6, 10, 'onesize', 4, 12.99);
+
+--Add Review
+INSERT into Reviews Values(6, 10, 20, 5, 9, 1, 'One Size', 'No');
+INSERT into Reviews Values(6, 14, 20, 5, 9, 5, 'One Size', 'Yes');
+
 -- Remove item from Kayleigh's cart
-DELETE FROM cart_items where cartid = 6 AND productID = 3;
+DELETE FROM cart_items where cartid = 6 AND productID = 10;
 
 -- Add to favorites
 INSERT INTO favorites VALUES(6, 2);
