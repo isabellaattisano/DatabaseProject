@@ -48,6 +48,11 @@ INSERT into product VALUES(seqproduct.nextVal, 'UGG White Faux Fur Earmuff', 'ac
 INSERT into product VALUES(seqproduct.nextVal, 'Mini Blue Heart Clip Set', 'accessories', 10.00, 15);
 INSERT into product VALUES(seqproduct.nextVal, 'Brown Multi Cat-Eye Sunglasses', 'accessories', 17.00, 15);
 
+INSERT into product VALUES(seqproduct.nextVal, 'SZA The Party Is Over Poster', 'posters', 5.91, 20);
+INSERT into product VALUES(seqproduct.nextVal, 'The Weeknd House of Balloons Album Poster', 'posters', 5.99, 20);
+INSERT into product VALUES(seqproduct.nextVal, 'Capri Blue Volcano Mercury Glass Jar Candle', 'candles', 25.20, 20);
+INSERT into product VALUES(seqproduct.nextVal, 'Wildflower Strawberry Fields iPhone Case', 'phone cases', 35.00, 15);
+INSERT into product VALUES(seqproduct.nextVal, 'Wildflower Polka Dot iPhone Case', 'phone cases', 37.00, 15);
 
 select * from product
 -------------------------------------------------------------------------------------------
