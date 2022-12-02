@@ -42,7 +42,11 @@ INSERT into product VALUES(seqproduct.nextVal, 'Olive Cable Knit Sock', 'accesso
 INSERT into product VALUES(seqproduct.nextVal, 'BAGGU Big Reusable Tote Bag', 'accessories', 18.00, 30);
 INSERT into product VALUES(seqproduct.nextVal, 'Black Bow Seam Tight', 'accessories', 17.00, 30);
 
-
+INSERT into product VALUES(seqproduct.nextVal, 'BAGGU Packing Cube Set', 'accessories', 34.00, 30);
+INSERT into product VALUES(seqproduct.nextVal, 'Silver Heart Drop Earring', 'accessories', 17.00, 20);
+INSERT into product VALUES(seqproduct.nextVal, 'UGG White Faux Fur Earmuff', 'accessories', 55.00, 20);
+INSERT into product VALUES(seqproduct.nextVal, 'Mini Blue Heart Clip Set', 'accessories', 10.00, 15);
+INSERT into product VALUES(seqproduct.nextVal, 'Brown Multi Cat-Eye Sunglasses', 'accessories', 17.00, 15);
 
 
 select * from product
