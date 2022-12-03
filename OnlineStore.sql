@@ -15,10 +15,10 @@ CREATE TABLE customer (
 --drop table address;
 CREATE TABLE address (
     accountid int not null,
-    Street	Char(50) NOT NULL,
-	city	Char(50) NOT NULL,
-	state	Char(2)	 NOT NULL,
-	zip	    Char(10) NOT NULL,
+    Street	varchar(50) NOT NULL,
+	city	varchar(50) NOT NULL,
+	state	varchar(2)	 NOT NULL,
+	zip	    varchar(10) NOT NULL,
     primary key (street, accountid),
     foreign key (accountid) references customer(accountid) ON DELETE CASCADE
 );
