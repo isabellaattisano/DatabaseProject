@@ -107,7 +107,7 @@ CREATE TABLE invoice_record_deleted_account(
     fname    varchar2(15) not null,
     lname    varchar2(15) not null,
     email	 varchar2(100) not null,
-    invoiceid int not null
+    invoiceid int not null,
     primary key (invoiceid),
     foreign key (invoiceid) references invoice(invoiceid) ON DELETE CASCADE,
 );
