@@ -36,6 +36,7 @@ INSERT into customer VALUES(seqID.nextVal, 'Hannah', 'Barksy', 'hbarsky@villanov
 --delete from address where accountid = 1 and street = '250 Spring Mill Road';
 INSERT INTO address VALUES(1, '27 W 53 Street', 'Bayonne', 'NJ', '07002');
 INSERT INTO address VALUES(1, '250 Spring Mill Road', 'Villanova', 'PA', '19085');
+INSERT INTO address VALUES(1, '250 Spring Mill Road', 'Villanova', 'PA', '19085');
 
 SELECT Street || ' ' || City || ', '|| State || ', ' || Zip as Addresses FROM address WHERE accountID = 1; 
 
@@ -43,6 +44,8 @@ SELECT Street || ' ' || City || ', '|| State || ', ' || Zip as Addresses FROM ad
 
 INSERT into payment Values(1, 5, 2024, '1234567891011123', '123');
 INSERT into payment Values(1, 8, 2028, '1234123412341234', '180');
+INSERT into payment Values(1, 3, 2025, '3456789089867654', '556');
+INSERT into payment Values(1, 9, 2023, '3748536394756382', '002');
 
 select expMonth ||'/'|| expYear AS Expiration_Date, '************'||''||SUBSTR(cardnumber, 12, 4) AS Card_Number 
 FROM payment WHERE accountID = 1;
