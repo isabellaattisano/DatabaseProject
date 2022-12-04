@@ -192,14 +192,23 @@ delete from customer where accountid = 2
 
 --CAITLIN ACCOUNT 
 
---create account 
+--create account with account number 8
 INSERT into customer VALUES(seqID.nextVal, 'Caitlin', 'van Goeverden', 'cvg@gmail.com', '4562348908');
 --Add address
-INSERT INTO address VALUES(3, '250 Spring Mill Road', 'Villanova', 'PA', '19085');
+INSERT INTO address VALUES(8, '250 Spring Mill Road', 'Villanova', 'PA', '19085');
 
-INSERT into payment Values(3, 3, 2025, '3456789089867654', '556');
-INSERT into payment Values(3, 9, 2023, '3748536394756382', '002');
+--add payment methods
+INSERT into payment Values(8, 3, 2025, '3456789089867654', '556');
+INSERT into payment Values(8, 9, 2023, '3748536394756382', '002');
 
+-- View Caitlin's address options
+SELECT Street ||' '|| City ||' '|| State ||' '|| Zip as Addresses 
+FROM address 
+WHERE accountID = 8;
+
+--view Caitlin's payment options
+select expMonth ||'/'|| expYear AS Expiration_Date, '************'||''||SUBSTR(cardnumber, 12, 4) AS Card_Number 
+FROM payment WHERE accountID = 8;
 
 insert into cart_items values(142, 15, 'large', 3);
 delete from customer where accountid = 142;
