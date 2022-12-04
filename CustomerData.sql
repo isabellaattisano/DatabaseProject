@@ -210,7 +210,12 @@ WHERE accountID = 8;
 select expMonth ||'/'|| expYear AS Expiration_Date, '************'||''||SUBSTR(cardnumber, 12, 4) AS Card_Number 
 FROM payment WHERE accountID = 8;
 
-insert into cart_items values(142, 15, 'large', 3);
+-- Add items to cart
+INSERT INTO cart_items VALUES(8, 2, 'small', 1, 49.95);
+INSERT INTO cart_items VALUES(8, 201, 'small', 1, 19.95);
+INSERT INTO cart_items VALUES(8, 184, 'medium', 2, 25);
+
+
 delete from customer where accountid = 142;
 --add address / payment 
 INSERT INTO address(accountid, street, city, state, zip) VALUES('121', 'Lancaster', 'Villanova', 'PA', '19085');
