@@ -54,6 +54,12 @@ INSERT into product VALUES(seqproduct.nextVal, 'Capri Blue Volcano Mercury Glass
 INSERT into product VALUES(seqproduct.nextVal, 'Wildflower Strawberry Fields iPhone Case', 'phone cases', 35.00, 15);
 INSERT into product VALUES(seqproduct.nextVal, 'Wildflower Polka Dot iPhone Case', 'phone cases', 37.00, 15);
 
+INSERT into product VALUES(seqproduct.nextVal, 'Pumpkin Spice', 'candles', 10.99, 2);
+INSERT into product VALUES(seqproduct.nextVal, 'Jacket', 'outerwear', 49.95, 2);
+INSERT into product VALUES(seqproduct.nextVal, 'Colorblock Windbreaker Jacket', 'outerwear', 69.00, 40);
+INSERT into product VALUES(seqproduct.nextVal, '5-Pack Rings', 'accessories', 34.00, 20);
+
+
 select * from product
 -------------------------------------------------------------------------------------------
 --Display Products 
