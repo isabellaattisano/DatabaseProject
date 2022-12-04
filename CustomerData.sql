@@ -27,6 +27,9 @@ SELECT i.invoiceid, i.fname || ' ' ||i.lname from invoice_record_deleted_account
 
 --create account 
 INSERT into customer VALUES(seqID.nextVal, 'Isabella', 'Attisano', 'iattisan@villanova.edu', '0123456789');
+INSERT into customer VALUES(seqID.nextVal, 'Caitlin', 'van Goeverden', 'cvangoev@villanova.edu', '4845888118');
+INSERT into customer VALUES(seqID.nextVal, 'Claire', 'Borman', 'cborman@villanova.edu', '4841231234');
+INSERT into customer VALUES(seqID.nextVal, 'Hannah', 'Barksy', 'hbarsky@villanova.edu', '7178903456');
 
 --Address add / delete / view
 
