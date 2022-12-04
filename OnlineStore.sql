@@ -109,7 +109,7 @@ CREATE TABLE invoice_record_deleted_account(
     email	 varchar2(100) not null,
     invoiceid int not null,
     primary key (invoiceid),
-    foreign key (invoiceid) references invoice(invoiceid) ON DELETE CASCADE,
+    foreign key (invoiceid) references invoice(invoiceid) ON DELETE CASCADE
 );
 
 --drop table reviews
