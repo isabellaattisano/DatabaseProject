@@ -166,3 +166,10 @@ group by ptype;
 
 --get all customer info
 SELECT accountid, fname || ' ' || lname as Name, email FROM CUSTOMER;
+
+-------------------------------------------------------------------------------------------
+--Get reviews for favorites
+SELECT p.pname, r.rating
+from product p and reviews r
+where p.productid=r.productid
+group by p.pname;
