@@ -124,6 +124,9 @@ select * from product where ptype in ('mugs', 'board games', 'posters', 'phone c
 --Perfect gifts under 30$
 SELECT PName, ProductID, Price FROM product WHERE Price < 30 and pquantity > 0;
 
+--Favorites
+SELECT PName FROM product p and favorites f where p.productid=f.productid;
+
 select * from product where pquantity > 0 and ptype = 'tops' and price<=30 and pquantity > 0;
 
 --FILTER BY TYPE 
