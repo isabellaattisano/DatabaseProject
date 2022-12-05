@@ -148,4 +148,7 @@ SELECT ptype, count(ptype) as Quantity
 from product
 group by ptype;
 
-select * from product
+-------------------------------------------------------------------------------------------
+
+--get all customer info
+SELECT accountid, fname || ' ' || lname as Name, email FROM CUSTOMER;
