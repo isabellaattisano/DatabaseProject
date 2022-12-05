@@ -243,18 +243,21 @@ from invoice_products ip join invoice i on ip.invoiceid = i.invoiceid join produ
 where i.accountid = 8
 order by i.invoiceid;
  
- 
- 
- 
- 
- 
+--add review
+INSERT into reviews Values(8, 2, 22, 5, 4, 4, 'small', 'Yes');
 
-INSERT into customer VALUES(seqID.nextVal, 'Caitlin', 'van Goeverden', 'cvg@gmail.com', '4562348908');
-insert into cart_items values(142, 15, 'large', 3);
-delete from customer where accountid = 142;
---add address / payment 
-INSERT INTO address(accountid, street, city, state, zip) VALUES('121', 'Lancaster', 'Villanova', 'PA', '19085');
-INSERT INTO payment(accountid, expmonth, expyear, cardnumber, securitycode) VALUES('121', '02', '23', '1234567890123456', '1234');
+--add items to Caitlin's favorites / get all favorited items 
+
+INSERT into favorites Values(8,2);
+INSERT into favorites Values(8, 201);
+
+SELECT pname, ptype, productid, price FROM favorites NATURAL JOIN product WHERE accountid = 8;
+
+--delete Caitlin's account
+Delete from customer where accountid = 8;
+
+--invoice history should still be found
+select ird.fname, ird.lname, ird.invoiceid from invoice_record_deleted_account ird where fname = 'Caitlin' and lname = 'van Goeverden'; 
 
 -------------------------------------------------------------------------------------------
 --Additional Accounts
