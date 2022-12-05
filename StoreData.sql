@@ -173,3 +173,10 @@ SELECT p.pname, r.rating
 from product p and reviews r
 where p.productid=r.productid
 group by p.pname;
+
+-------------------------------------------------------------------------------------------
+--view recently purchased
+SELECT p.pname, p.psize, p.pquantity, i.invoiceid
+from product p and invoice_products i
+where p.productid=i.productid
+group by i.invoiceid;
