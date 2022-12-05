@@ -59,6 +59,10 @@ INSERT into product VALUES(seqproduct.nextVal, 'Jacket', 'outerwear', 49.95, 2);
 INSERT into product VALUES(seqproduct.nextVal, 'Colorblock Windbreaker Jacket', 'outerwear', 69.00, 40);
 INSERT into product VALUES(seqproduct.nextVal, '5-Pack Rings', 'accessories', 34.00, 20);
 
+INSERT into product VALUES(seqproduct.nextVal, 'Winter Wonderland', 'candles', 10.99, 2);
+INSERT into product VALUES(seqproduct.nextVal, 'Metallica', 'posters', 5.99, 2);
+INSERT into product VALUES(seqproduct.nextVal, 'Silver Hoops - 10pack', 'accessories', 20.99, 20);
+INSERT into product VALUES(seqproduct.nextVal, 'Sugar and Spice and Everything Nice', 'candles', 10.99, 20);
 
 select * from product
 -------------------------------------------------------------------------------------------
