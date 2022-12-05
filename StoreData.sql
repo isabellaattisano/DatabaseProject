@@ -86,15 +86,22 @@ UPDATE product
 SET pquantity = 110
 WHERE ProductID = 2;
 
+-- High Waisted Pants updated to stored quantity of 50
+UPDATE product
+SET pquantity = 50
+WHERE ProductID = 3;
+
 -- Plaid Mini Skirt updated to stored quantity of 100
 UPDATE product
 SET pquantity = 140
 WHERE ProductID = 4;
+
 -- Jacket updated to stored quantity of 15
 UPDATE product 
 SET pquantity = 190
 WHERE ProductID = 5;
 
+-- 4 Pack Scunchies updated to stored quantity of 90
 UPDATE product 
 SET pquantity = 90
 WHERE ProductID = 6;
