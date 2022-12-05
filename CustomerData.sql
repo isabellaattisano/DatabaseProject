@@ -192,7 +192,62 @@ delete from customer where accountid = 2
 
 --CAITLIN ACCOUNT 
 
---create account 
+--create account with account number 8
+ INSERT into customer VALUES(seqID.nextVal, 'Caitlin', 'van Goeverden', 'cvg@gmail.com', '4562348908');
+ --Add address
+ INSERT INTO address VALUES(8, '250 Spring Mill Road', 'Villanova', 'PA', '19085');
+
+ --add payment methods
+ INSERT into payment Values(8, 3, 2025, '3456789089867654', '556');
+ INSERT into payment Values(8, 9, 2023, '3748536394756382', '002');
+
+ -- View Caitlin's address options
+ SELECT Street ||' '|| City ||' '|| State ||' '|| Zip as Addresses 
+ FROM address 
+ WHERE accountID = 8;
+
+ --view Caitlin's payment options
+ select expMonth ||'/'|| expYear AS Expiration_Date, '************'||''||SUBSTR(cardnumber, 12, 4) AS Card_Number 
+ FROM payment WHERE accountID = 8;
+
+ -- Add items to cart
+ INSERT INTO cart_items VALUES(8, 2, 'small', 1, 49.95);
+ INSERT INTO cart_items VALUES(8, 201, 'small', 1, 19.95);
+ INSERT INTO cart_items VALUES(8, 184, 'medium', 2, 25);
+ 
+ SELECT * from cart_items where cartid =8;
+
+-- total price of cart 
+select sum(c.price*c.pquantity) from cart_items c where cartid =8;
+
+--see product review 
+
+select age, feet ||' foot '|| inches as height, rating ||''|| ' out of 5' as Overall_Rating, sizedesc, recommend from reviews where productid = 2;
+ 
+DELETE FROM cart_items where cartid =8 and productid = 201;
+
+UPDATE cart_items set pquantity = 3 where cartid = 8 and productid = 2;
+UPDATE cart_items set psize = 'medium' where cartid = 8 and productid = 184;
+
+--place order
+
+UPDATE cart set cartid = 8 where cartid = 8;
+
+-- view invoice history 
+
+select * from invoice where accountid =8;
+
+--view invoice products 
+select i.invoiceid, p.pname, ip.psize, ip.pquanity, p.price 
+from invoice_products ip join invoice i on ip.invoiceid = i.invoiceid join product p on p.productid = ip.productid 
+where i.accountid = 8
+order by i.invoiceid;
+ 
+ 
+ 
+ 
+ 
+ 
 
 INSERT into customer VALUES(seqID.nextVal, 'Caitlin', 'van Goeverden', 'cvg@gmail.com', '4562348908');
 insert into cart_items values(142, 15, 'large', 3);
