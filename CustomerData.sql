@@ -1,7 +1,7 @@
 --HELPFUL STATEMENTS
 
 --delete from customer where accountid >= 1;
-select * from customer;
+select * from customer where accountid >= 1;
 --delete from product;
 select * from product;
 --delete from address;
@@ -28,13 +28,11 @@ SELECT i.invoiceid, i.fname || ' ' ||i.lname from invoice_record_deleted_account
 --create account 
 INSERT into customer VALUES(seqID.nextVal, 'Isabella', 'Attisano', 'iattisan@villanova.edu', '0123456789');
 
-
 --Address add / delete / view
 
 --delete from address where accountid = 1 and street = '250 Spring Mill Road';
 INSERT INTO address VALUES(1, '27 W 53 Street', 'Bayonne', 'NJ', '07002');
 INSERT INTO address VALUES(1, '250 Spring Mill Road', 'Villanova', 'PA', '19085');
-
 
 SELECT Street || ' ' || City || ', '|| State || ', ' || Zip as Addresses FROM address WHERE accountID = 1; 
 
@@ -43,15 +41,17 @@ SELECT Street || ' ' || City || ', '|| State || ', ' || Zip as Addresses FROM ad
 INSERT into payment Values(1, 5, 2024, '1234567891011123', '123');
 INSERT into payment Values(1, 8, 2028, '1234123412341234', '180');
 
-select expMonth ||'/'|| expYear AS Expiration_Date, '************'||''||SUBSTR(cardnumber, 12, 4) AS Card_Number 
+delete from payment where accountid =1 and cardnumber = '1234567891011123';
+
+select expMonth ||'/'|| expYear AS Expiration_Date, '************'||''||SUBSTR(cardnumber, 13, 4) AS Card_Number 
 FROM payment WHERE accountID = 1;
 
 --add / remove items to cart
 
-INSERT INTO cart_items VALUES(1, 1, 'medium', 1, 19.95);
-INSERT INTO cart_items VALUES(1, 4, 'large', 3, 25);
-INSERT INTO cart_items VALUES(1, 11, 'onesize', 2, 12.99);
-INSERT INTO cart_items VALUES(1, 46, 'onesize', 4, 37);
+INSERT INTO cart_items VALUES(1, 30, 'medium', 1, 19.95);
+INSERT INTO cart_items VALUES(1, 31, 'large', 1, 25);
+INSERT INTO cart_items VALUES(1, 40, 'onesize', 2, 12.99);
+INSERT INTO cart_items VALUES(1, 41, 'onesize', 1, 37);
 
 SELECT * from cart_items where cartid =1;
 
@@ -60,7 +60,7 @@ select sum(c.price*c.pquantity) from cart_items c where cartid =1;
 
 --see product review 
 
-select age, feet ||' foot '|| inches as height, rating ||''|| ' out of 5' as Overall_Rating, sizedesc, recommend from reviews where productid = 4;
+select age, feet ||' foot '|| inches as height, rating ||''|| ' out of 5' as Overall_Rating, sizedesc, recommend from reviews where productid = 11;
  
 DELETE FROM cart_items where cartid =1 and productid = 4;
 
@@ -123,14 +123,14 @@ INSERT INTO payment VALUES(6, 2, 2028, '5555444433332222', '123');
 INSERT INTO payment VALUES(6, 1, 2021, '1234567891234567', '423');
 
 -- View Kayleigh's payment options
-select expMonth ||'/'|| expYear AS Expiration_Date, '************'||''||SUBSTR(cardnumber, 12, 4) AS Card_Number 
+select expMonth ||'/'|| expYear AS Expiration_Date, '************'||''||SUBSTR(cardnumber, 13, 4) AS Card_Number 
 FROM payment 
-WHERE accountID = 6;
+WHERE accountID = 2;
 
 -- Add items to cart
-INSERT INTO cart_items VALUES(6, 1, 'medium', 1, 19.95);
-INSERT INTO cart_items VALUES(6, 3, 'medium', 1, 49.95);
-INSERT INTO cart_items VALUES(6, 4, 'medium', 3, 25);
+INSERT INTO cart_items VALUES(2, 1, 'medium', 1, 19.95);
+INSERT INTO cart_items VALUES(2, 3, 'medium', 1, 49.95);
+INSERT INTO cart_items VALUES(2, 4, 'medium', 3, 25);
 
 -- View Kayleigh's current cart
 select * from cart_items where cartid = 2;
@@ -155,7 +155,7 @@ select * from invoice_products where invoiceid = 1
 
 select * from product
 --Create a review for Kayleigh
-INSERT into reviews Values(2, 2, 20, 5, 9, 4, 'True to Size', 'Yes');
+INSERT into reviews Values(2, 11, 20, 5, 9, 4, 'True to Size', 'Yes');
 
 --Check Kayleigh's reviews
 select age, feet ||' foot '|| inches as height, rating ||''|| ' out of 5' as Overall_Rating, sizedesc, recommend from reviews where accountid = 2;
@@ -192,30 +192,10 @@ delete from customer where accountid = 2
 
 --CAITLIN ACCOUNT 
 
---create account with account number 8
+--create account 
+
 INSERT into customer VALUES(seqID.nextVal, 'Caitlin', 'van Goeverden', 'cvg@gmail.com', '4562348908');
---Add address
-INSERT INTO address VALUES(8, '250 Spring Mill Road', 'Villanova', 'PA', '19085');
-
---add payment methods
-INSERT into payment Values(8, 3, 2025, '3456789089867654', '556');
-INSERT into payment Values(8, 9, 2023, '3748536394756382', '002');
-
--- View Caitlin's address options
-SELECT Street ||' '|| City ||' '|| State ||' '|| Zip as Addresses 
-FROM address 
-WHERE accountID = 8;
-
---view Caitlin's payment options
-select expMonth ||'/'|| expYear AS Expiration_Date, '************'||''||SUBSTR(cardnumber, 12, 4) AS Card_Number 
-FROM payment WHERE accountID = 8;
-
--- Add items to cart
-INSERT INTO cart_items VALUES(8, 2, 'small', 1, 49.95);
-INSERT INTO cart_items VALUES(8, 201, 'small', 1, 19.95);
-INSERT INTO cart_items VALUES(8, 184, 'medium', 2, 25);
-
-
+insert into cart_items values(142, 15, 'large', 3);
 delete from customer where accountid = 142;
 --add address / payment 
 INSERT INTO address(accountid, street, city, state, zip) VALUES('121', 'Lancaster', 'Villanova', 'PA', '19085');
@@ -223,8 +203,7 @@ INSERT INTO payment(accountid, expmonth, expyear, cardnumber, securitycode) VALU
 
 -------------------------------------------------------------------------------------------
 --Additional Accounts
-INSERT into customer VALUES(seqID.nextVal, 'Claire', 'Borman', 'cborman@villanova.edu', '4841231234');
-INSERT into customer VALUES(seqID.nextVal, 'Hannah', 'Barksy', 'hbarsky@villanova.edu', '7178903456');
+
 INSERT into customer VALUES(seqID.nextVal, 'Mary', 'Smith', 'Mary234@icloud.com', '1923347659');
 
 --Sarah's Account
