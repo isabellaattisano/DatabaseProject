@@ -328,10 +328,16 @@ select sum(c.price*c.pquantity) from cart_items c where cartid =7;
 --Add to favorites
 INSERT INTO favorites VALUES(7, 3);
 INSERT INTO favorites VALUES(7, 17);
-INSERT INTO favorites VALUES(7, 22);
+INSERT INTO favorites VALUES(7, 15);
 
 --Get favorite items
 SELECT pname, ptype, productid, price FROM favorites NATURAL JOIN product WHERE accountid = 7;
+
+--Add review
+INSERT into reviews Values(7, 3, 20, 5, 2, 5, 'True to Size', 'Yes');
+INSERT into reviews Values(7, 15, 20, 5, 2, 5, 'One Size', 'Yes');
+
+
 
 -------------------------------------------------------------------------------------------
 
