@@ -292,5 +292,8 @@ select * from cart_items where cartid = 4;
 
 --CAMRYN ACCOUNT 
 
+--create account 
+INSERT into customer VALUES(seqID.nextVal, 'Camryn', 'Taylor', 'camtaylor245@gmail.com', '12312345');
+
 -------------------------------------------------------------------------------------------
 
