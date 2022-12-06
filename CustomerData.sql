@@ -320,6 +320,8 @@ SELECT * from cart_items where cartid =7;
 UPDATE cart_items set psize = 'medium' where cartid = 7 and productid = 3;
 UPDATE cart_items set psize = 'medium' where cartid = 7 and productid = 17;
 
+DELETE FROM cart_items where cartid = 7 and productid = 5;
+
 -- total price of cart 
 select sum(c.price*c.pquantity) from cart_items c where cartid =7;
 
