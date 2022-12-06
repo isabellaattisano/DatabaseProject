@@ -317,6 +317,9 @@ INSERT INTO cart_items VALUES(7, 15, 'onesize', 1, 10.00);
 
 SELECT * from cart_items where cartid =7;
 
+UPDATE cart_items set psize = 'medium' where cartid = 7 and productid = 3;
+UPDATE cart_items set psize = 'medium' where cartid = 7 and productid = 17;
+
 -- total price of cart 
 select sum(c.price*c.pquantity) from cart_items c where cartid =7;
 
