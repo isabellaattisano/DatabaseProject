@@ -301,5 +301,8 @@ INSERT INTO address VALUES(7, '250 Spring Mill Road', 'Villanova', 'PA', '19085'
  --Add payment 
 INSERT into payment Values(7, 6, 2024, '1233218756902345', '709');
 
+--Add cart items
+INSERT INTO cart_items VALUES(7, 3, 'small', 1, 49.95);
+INSERT INTO cart_items VALUES(7, 5, 'small', 1, 49.95);
 -------------------------------------------------------------------------------------------
 
