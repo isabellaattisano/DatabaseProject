@@ -353,5 +353,13 @@ SELECT pname, ptype, productid, price FROM favorites NATURAL JOIN product WHERE 
 INSERT into reviews Values(7, 3, 20, 5, 2, 5, 'True to Size', 'Yes');
 INSERT into reviews Values(7, 15, 20, 5, 2, 5, 'One Size', 'Yes');
 
+--delete account
+
+Delete from customer where accountid = 7;
+
+--invoice history should still be found
+
+select ird.fname, ird.lname, ird.invoiceid from invoice_record_deleted_account ird where fname = 'Camryn' and lname = 'Taylor'; 
+
 -------------------------------------------------------------------------------------------
 
