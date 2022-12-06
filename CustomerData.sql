@@ -321,9 +321,12 @@ SELECT * from cart_items where cartid =7;
 select sum(c.price*c.pquantity) from cart_items c where cartid =7;
 
 --Add to favorites
-INSERT INTO favorites VALUES(2, 3);
-INSERT INTO favorites VALUES(2, 17);
-INSERT INTO favorites VALUES(2, 22);
+INSERT INTO favorites VALUES(7, 3);
+INSERT INTO favorites VALUES(7, 17);
+INSERT INTO favorites VALUES(7, 22);
+
+--Get favorite items
+SELECT pname, ptype, productid, price FROM favorites NATURAL JOIN product WHERE accountid = 7;
 
 -------------------------------------------------------------------------------------------
 
