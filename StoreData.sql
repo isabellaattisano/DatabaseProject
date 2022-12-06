@@ -64,6 +64,11 @@ INSERT into product VALUES(seqproduct.nextVal, 'Metallica', 'posters', 5.99, 2);
 INSERT into product VALUES(seqproduct.nextVal, 'Silver Hoops - 10pack', 'accessories', 20.99, 20);
 INSERT into product VALUES(seqproduct.nextVal, 'Sugar and Spice and Everything Nice', 'candles', 10.99, 20);
 
+INSERT into product VALUES(seqproduct.nextVal, 'Vanilla Birch', 'candles', 10.99, 20);
+INSERT into product VALUES(seqproduct.nextVal, 'Winter Mantel', 'candles', 10.99, 20);
+INSERT into product VALUES(seqproduct.nextVal, 'Christmas Cookie', 'candles', 10.99, 20);
+INSERT into product VALUES(seqproduct.nextVal, 'Winter Forest', 'candles', 10.99, 20);
+
 select * from product
 -------------------------------------------------------------------------------------------
 --Display Products 
