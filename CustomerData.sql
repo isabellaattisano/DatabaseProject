@@ -320,6 +320,9 @@ SELECT * from cart_items where cartid =7;
 UPDATE cart_items set psize = 'medium' where cartid = 7 and productid = 3;
 UPDATE cart_items set psize = 'medium' where cartid = 7 and productid = 17;
 
+--see product review 
+select age, feet ||' foot '|| inches as height, rating ||''|| ' out of 5' as Overall_Rating, sizedesc, recommend from reviews where productid = 5;
+--Delete product
 DELETE FROM cart_items where cartid = 7 and productid = 5;
 
 -- total price of cart 
