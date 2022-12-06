@@ -310,6 +310,10 @@ INSERT into payment Values(7, 6, 2024, '1233218756902345', '709');
 --Add cart items
 INSERT INTO cart_items VALUES(7, 3, 'small', 1, 49.95);
 INSERT INTO cart_items VALUES(7, 5, 'small', 1, 49.95);
+INSERT INTO cart_items VALUES(7, 2, 'small', 1, 49.95);
+INSERT INTO cart_items VALUES(7, 17, 'small', 1, 39.00);
+INSERT INTO cart_items VALUES(7, 22, 'small', 1, 60.00);
+INSERT INTO cart_items VALUES(7, 15, 'onesize', 1, 10.00);
 
 SELECT * from cart_items where cartid =7;
 
