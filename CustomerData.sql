@@ -184,12 +184,6 @@ SELECT pname, ptype, productid, price FROM favorites NATURAL JOIN product WHERE 
 --Delete Kayleigh's account 
 delete from customer where accountid = 2
 
--------------------------------------------------------------------------------------------
-
---CAMRYN ACCOUNT 
-
--------------------------------------------------------------------------------------------
-
 --CAITLIN ACCOUNT 
 
 --create account with account number 8
@@ -293,4 +287,10 @@ INSERT into cart_items Values(5, 1, 'medium', 2, 39.90);
 
 -- View cart items
 select * from cart_items where cartid = 4;
+
+-------------------------------------------------------------------------------------------
+
+--CAMRYN ACCOUNT 
+
+-------------------------------------------------------------------------------------------
 
