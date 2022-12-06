@@ -74,10 +74,15 @@ INSERT into product VALUES(seqproduct.nextVal, 'Washed Black Cargo Pocket Jeans'
 INSERT into product VALUES(seqproduct.nextVal, 'Gold Basic Aviator Sunglasses', 'accessories', 12.99, 20);
 INSERT into product VALUES(seqproduct.nextVal, 'Chocolate Satin Corset', 'tops', 25.99, 20);
 
-INSERT into product VALUES(seqproduct.nextVal, 'White Bardot Lac Frill Hem Midi Dress', 'dresses', 70.00, 20);
+INSERT into product VALUES(seqproduct.nextVal, 'White Bardot Lace Frill Hem Midi Dress', 'dresses', 70.00, 20);
 INSERT into product VALUES(seqproduct.nextVal, 'Stone Maxi Length Hooded Puffer', 'outerwear', 65.99, 20);
 INSERT into product VALUES(seqproduct.nextVal, 'Pink Ribbed Halterneck Bodycon Dress', 'dresses', 45.99, 20);
 INSERT into product VALUES(seqproduct.nextVal, 'Cream Textured Rib High Waist Flared Pants', 'bottoms', 45.99, 20);
+
+INSERT into product VALUES(seqproduct.nextVal, 'Silver Interlocking Square Drop Earrings', 'accessories', 12.00, 20);
+INSERT into product VALUES(seqproduct.nextVal, 'White Over Baguette Shoulder Bag', 'accessories', 35.00, 20);
+INSERT into product VALUES(seqproduct.nextVal, 'Pink Velvet Lace Up Top', 'tops', 35.99, 20);
+INSERT into product VALUES(seqproduct.nextVal, 'J Cole Metal Poster', 'posters', 25.99, 20);
 
 select * from product
 -------------------------------------------------------------------------------------------
