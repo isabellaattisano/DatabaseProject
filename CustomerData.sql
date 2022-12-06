@@ -325,8 +325,21 @@ select age, feet ||' foot '|| inches as height, rating ||''|| ' out of 5' as Ove
 --Delete product
 DELETE FROM cart_items where cartid = 7 and productid = 5;
 
--- total price of cart 
+--total price of cart 
 select sum(c.price*c.pquantity) from cart_items c where cartid =7;
+
+--place order
+UPDATE cart set cartid = 7 where cartid = 7;
+
+--view invoice history 
+
+select * from invoice where accountid =7;
+
+--view invoice products 
+select i.invoiceid, p.pname, ip.psize, ip.pquanity, p.price 
+from invoice_products ip join invoice i on ip.invoiceid = i.invoiceid join product p on p.productid = ip.productid 
+where i.accountid = 7 
+order by i.invoiceid;
 
 --Add to favorites
 INSERT INTO favorites VALUES(7, 3);
@@ -339,8 +352,6 @@ SELECT pname, ptype, productid, price FROM favorites NATURAL JOIN product WHERE 
 --Add review
 INSERT into reviews Values(7, 3, 20, 5, 2, 5, 'True to Size', 'Yes');
 INSERT into reviews Values(7, 15, 20, 5, 2, 5, 'One Size', 'Yes');
-
-
 
 -------------------------------------------------------------------------------------------
 
