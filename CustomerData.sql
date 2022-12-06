@@ -16,12 +16,6 @@ select * from invoice;
 select * from invoice_record_deleted_account;
 select * from reviews;
 
-SELECT i.invoiceid, i.totalprice, pp.pname, c.fname || ' ' ||c.lname from invoice i join invoice_products p on i.invoiceid =p.invoiceid join product pp on pp.productid = p.productid join customer c on c.accountid= i.accountid;
-
-SELECT i.invoiceid, pp.pname from invoice i join invoice_products p on i.invoiceid =p.invoiceid join product pp on pp.productid = p.productid;
-
-SELECT i.invoiceid, i.fname || ' ' ||i.lname from invoice_record_deleted_account i;
-
 -------------------------------------------------------------------------------------------
 --BELLA ACCOUNT 
 
@@ -62,10 +56,10 @@ select sum(c.price*c.pquantity) from cart_items c where cartid =1;
 
 select age, feet ||' foot '|| inches as height, rating ||''|| ' out of 5' as Overall_Rating, sizedesc, recommend from reviews where productid = 11;
  
-DELETE FROM cart_items where cartid =1 and productid = 4;
+DELETE FROM cart_items where cartid =1 and productid = 40;
 
-UPDATE cart_items set pquantity = 1 where cartid = 1 and productid = 10;
-UPDATE cart_items set psize = 'large' where cartid = 1 and productid = 1;
+UPDATE cart_items set pquantity = 1 where cartid = 1 and productid = 40;
+UPDATE cart_items set psize = 'large' where cartid = 1 and productid = 31;
 
 --place order
 
@@ -94,8 +88,7 @@ INSERT into favorites Values(1,26);
 SELECT pname, ptype, productid, price FROM favorites NATURAL JOIN product WHERE accountid = 1;
 
 --delete account
-
-Delete from customer where accountid = 1;
+--Delete from customer where accountid = 1;
 
 --invoice history should still be found
 
@@ -106,7 +99,6 @@ select ird.fname, ird.lname, ird.invoiceid from invoice_record_deleted_account i
 -- KAYLEIGH ACCOUNT 
 -- Create accounts with ID 6, 7
 INSERT INTO customer VALUES(seqID.nextVal, 'Kayleigh', 'DiNatale', 'kwd@villanova.edu', '9141234567');
-INSERT INTO customer VALUES(seqID.nextVal, 'Regan', 'DiNatale', 'rdin@ohiostate.edu', '9178342938');
 
 -- Add addresses to Kayleigh's account
 INSERT INTO address VALUES(2, '123 Green St', 'Philadelphia', 'PA', '10456');
@@ -119,8 +111,8 @@ FROM address
 WHERE accountID = 2;
 
 -- ADD payments to Kayleigh's account
-INSERT INTO payment VALUES(6, 2, 2028, '5555444433332222', '123');
-INSERT INTO payment VALUES(6, 1, 2021, '1234567891234567', '423');
+INSERT INTO payment VALUES(2, 2, 2028, '5555444433332222', '123');
+INSERT INTO payment VALUES(2, 1, 2021, '1234567891234567', '423');
 
 -- View Kayleigh's payment options
 select expMonth ||'/'|| expYear AS Expiration_Date, '************'||''||SUBSTR(cardnumber, 13, 4) AS Card_Number 
@@ -145,7 +137,7 @@ Update cart_items set price = 50 where cartid = 2 and productid = 4;
 select * from cart_items where cartid = 2
 
 --Update kayleigh cart to cause purchase and store in invoice
-Update cart set cartid = 6 where cartid = 2;
+Update cart set cartid = 2 where cartid = 2;
 
 -- Check trigger worked for kayleigh's invoice
 select * from invoice where accountid = 2
@@ -182,79 +174,81 @@ INSERT INTO favorites VALUES(2, 5);
 SELECT pname, ptype, productid, price FROM favorites NATURAL JOIN product WHERE accountid = 2;
 
 --Delete Kayleigh's account 
-delete from customer where accountid = 2
+--delete from customer where accountid = 2
+
+-------------------------------------
 
 --CAITLIN ACCOUNT 
-
---create account with account number 8
  INSERT into customer VALUES(seqID.nextVal, 'Caitlin', 'van Goeverden', 'cvg@gmail.com', '4562348908');
  --Add address
- INSERT INTO address VALUES(8, '250 Spring Mill Road', 'Villanova', 'PA', '19085');
+ INSERT INTO address VALUES(3, '250 Spring Mill Road', 'Villanova', 'PA', '19085');
 
  --add payment methods
- INSERT into payment Values(8, 3, 2025, '3456789089867654', '556');
- INSERT into payment Values(8, 9, 2023, '3748536394756382', '002');
+ INSERT into payment Values(3, 3, 2025, '3456789089867654', '556');
+ INSERT into payment Values(3, 9, 2023, '3748536394756382', '002');
 
  -- View Caitlin's address options
  SELECT Street ||' '|| City ||' '|| State ||' '|| Zip as Addresses 
  FROM address 
- WHERE accountID = 8;
+ WHERE accountID = 3;
 
  --view Caitlin's payment options
- select expMonth ||'/'|| expYear AS Expiration_Date, '************'||''||SUBSTR(cardnumber, 12, 4) AS Card_Number 
- FROM payment WHERE accountID = 8;
+ select expMonth ||'/'|| expYear AS Expiration_Date, '************'||''||SUBSTR(cardnumber, 13, 4) AS Card_Number 
+ FROM payment WHERE accountID = 3;
 
  -- Add items to cart
- INSERT INTO cart_items VALUES(8, 2, 'small', 1, 49.95);
- INSERT INTO cart_items VALUES(8, 201, 'small', 1, 19.95);
- INSERT INTO cart_items VALUES(8, 184, 'medium', 2, 25);
+ INSERT INTO cart_items VALUES(3, 2, 'small', 1, 49.95);
+ INSERT INTO cart_items VALUES(3, 22, 'small', 1, 19.95);
+ INSERT INTO cart_items VALUES(3, 24, 'medium', 2, 25);
  
- SELECT * from cart_items where cartid =8;
+ SELECT * from cart_items where cartid =3;
 
 -- total price of cart 
-select sum(c.price*c.pquantity) from cart_items c where cartid =8;
+select sum(c.price*c.pquantity) from cart_items c where cartid =3;
 
 --see product review 
 
 select age, feet ||' foot '|| inches as height, rating ||''|| ' out of 5' as Overall_Rating, sizedesc, recommend from reviews where productid = 2;
  
-DELETE FROM cart_items where cartid =8 and productid = 201;
+DELETE FROM cart_items where cartid =3 and productid = 22;
 
-UPDATE cart_items set pquantity = 3 where cartid = 8 and productid = 2;
-UPDATE cart_items set psize = 'medium' where cartid = 8 and productid = 184;
+UPDATE cart_items set pquantity = 3 where cartid = 3 and productid = 24;
+UPDATE cart_items set psize = 'medium' where cartid = 3 and productid = 24;
 
 --place order
 
-UPDATE cart set cartid = 8 where cartid = 8;
+UPDATE cart set cartid = 3 where cartid = 3;
 
 -- view invoice history 
 
-select * from invoice where accountid =8;
+select * from invoice where accountid =3;
 
 --view invoice products 
 select i.invoiceid, p.pname, ip.psize, ip.pquanity, p.price 
 from invoice_products ip join invoice i on ip.invoiceid = i.invoiceid join product p on p.productid = ip.productid 
-where i.accountid = 8
+where i.accountid = 3
 order by i.invoiceid;
  
 --add review
-INSERT into reviews Values(8, 2, 22, 5, 4, 4, 'small', 'Yes');
+INSERT into reviews Values(3, 2, 22, 5, 4, 4, 'small', 'Yes');
 
 --add items to Caitlin's favorites / get all favorited items 
 
-INSERT into favorites Values(8,2);
-INSERT into favorites Values(8, 201);
+INSERT into favorites Values(3,2);
+INSERT into favorites Values(3, 40);
 
-SELECT pname, ptype, productid, price FROM favorites NATURAL JOIN product WHERE accountid = 8;
+SELECT pname, ptype, productid, price FROM favorites NATURAL JOIN product WHERE accountid = 3;
 
 --delete Caitlin's account
-Delete from customer where accountid = 8;
+--Delete from customer where accountid = 8;
 
 --invoice history should still be found
 select ird.fname, ird.lname, ird.invoiceid from invoice_record_deleted_account ird where fname = 'Caitlin' and lname = 'van Goeverden'; 
 
 -------------------------------------------------------------------------------------------
 --Additional Accounts
+
+INSERT INTO customer VALUES(seqID.nextVal, 'Regan', 'DiNatale', 'rdin@ohiostate.edu', '9178342938');
 
 INSERT into customer VALUES(seqID.nextVal, 'Mary', 'Smith', 'Mary234@icloud.com', '1923347659');
 
@@ -286,7 +280,7 @@ INSERT into cart_items Values(5, 6, 'small', 1, 14.95);
 INSERT into cart_items Values(5, 1, 'medium', 2, 39.90);
 
 -- View cart items
-select * from cart_items where cartid = 4;
+select * from cart_items where cartid = 5;
 
 -------------------------------------------------------------------------------------------
 
@@ -354,12 +348,10 @@ INSERT into reviews Values(7, 3, 20, 5, 2, 5, 'True to Size', 'Yes');
 INSERT into reviews Values(7, 15, 20, 5, 2, 5, 'One Size', 'Yes');
 
 --delete account
-
-Delete from customer where accountid = 7;
+--Delete from customer where accountid = 7;
 
 --invoice history should still be found
 
 select ird.fname, ird.lname, ird.invoiceid from invoice_record_deleted_account ird where fname = 'Camryn' and lname = 'Taylor'; 
 
 -------------------------------------------------------------------------------------------
-
