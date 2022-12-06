@@ -311,5 +311,10 @@ INSERT into payment Values(7, 6, 2024, '1233218756902345', '709');
 INSERT INTO cart_items VALUES(7, 3, 'small', 1, 49.95);
 INSERT INTO cart_items VALUES(7, 5, 'small', 1, 49.95);
 
+SELECT * from cart_items where cartid =7;
+
+-- total price of cart 
+select sum(c.price*c.pquantity) from cart_items c where cartid =7;
+
 -------------------------------------------------------------------------------------------
 
