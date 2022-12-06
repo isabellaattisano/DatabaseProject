@@ -69,6 +69,11 @@ INSERT into product VALUES(seqproduct.nextVal, 'Winter Mantel', 'candles', 10.99
 INSERT into product VALUES(seqproduct.nextVal, 'Christmas Cookie', 'candles', 10.99, 20);
 INSERT into product VALUES(seqproduct.nextVal, 'Winter Forest', 'candles', 10.99, 20);
 
+INSERT into product VALUES(seqproduct.nextVal, 'Forest Green Oversized Sweater', 'tops', 49.95, 20);
+INSERT into product VALUES(seqproduct.nextVal, 'Washed Black Cargo Pocket Jeans', 'bottoms', 65.99, 20);
+INSERT into product VALUES(seqproduct.nextVal, 'Gold Basic Aviator Sunglasses', 'accessories', 12.99, 20);
+INSERT into product VALUES(seqproduct.nextVal, 'Chocolate Satin Corset', 'tops', 25.99, 20);
+
 select * from product
 -------------------------------------------------------------------------------------------
 --Display Products 
