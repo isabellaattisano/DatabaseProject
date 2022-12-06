@@ -295,8 +295,11 @@ select * from cart_items where cartid = 4;
 --create account 
 INSERT into customer VALUES(seqID.nextVal, 'Camryn', 'Taylor', 'camtaylor245@gmail.com', '12312345');
 
- --Add address
- INSERT INTO address VALUES(4, '250 Spring Mill Road', 'Villanova', 'PA', '19085');
+--Add address
+INSERT INTO address VALUES(7, '250 Spring Mill Road', 'Villanova', 'PA', '19085');
+ 
+ --Add payment 
+INSERT into payment Values(7, 6, 2024, '1233218756902345', '709');
 
 -------------------------------------------------------------------------------------------
 
