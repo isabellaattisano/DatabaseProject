@@ -287,7 +287,7 @@ select * from cart_items where cartid = 5;
 --CAMRYN ACCOUNT 
 
 --create account 
-INSERT into customer VALUES(seqID.nextVal, 'Camryn', 'Taylor', 'camtaylor245@gmail.com', '12312345');
+INSERT into customer VALUES(seqID.nextVal, 'Camryn', 'Taylor', 'camtaylor245@gmail.com', '1231234567');
 
 --Add School and Home address
 INSERT INTO address VALUES(7, '250 Spring Mill Road', 'Villanova', 'PA', '19085');
