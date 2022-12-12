@@ -180,11 +180,3 @@ BEGIN
     end loop;
     delete from cart_items where cartid = :old.cartid;
 END;
-
---create view for invoice 
-CREATE View invoice_view (ip.invoiceid, p.productid, ip.psize, ip.pquanity, p.price) as 
-SELECT p.productid, sum(p.price*ip.pquanity)
-from invoice_products ip NATURAL JOIN product p
-GROUP BY productid;
---
-    
